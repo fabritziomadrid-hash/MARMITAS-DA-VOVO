@@ -3,245 +3,454 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marmitaria Neon | Pedidos Online</title>
+  <title>Cantinho da Vovó Marmitas | Pedidos Online</title>
   <style>
-    /* VARIABLES & RESET */
+    /* VARIABLES & NEON PALETTE */
     :root {
       --bg-color: #0b0b0f;
-      --card-bg: #16161e;
+      --card-bg: #15151e;
       --orange-neon: #ff6600;
-      --orange-glow: rgba(ff, 102, 0, 0.4);
+      --orange-glow: rgba(255, 102, 0, 0.45);
       --red-neon: #ff0033;
+      --red-glow: rgba(255, 0, 51, 0.4);
       --white: #ffffff;
-      --text-gray: #a0a0b0;
+      --gray-light: #e0e0e0;
+      --gray-text: #a0a0b5;
+      --border-neon: #ff5500;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     }
 
     body {
       background-color: var(--bg-color);
       color: var(--white);
-      padding-bottom: 80px;
+      padding-bottom: 110px;
+      overflow-x: hidden;
     }
 
-    /* HEADER */
+    /* HEADER & LOGO AREA */
     header {
-      background: linear-gradient(135deg, #121218, #0b0b0f);
+      background: linear-gradient(180deg, #181824 0%, #0b0b0f 100%);
       border-bottom: 2px solid var(--orange-neon);
-      box-shadow: 0 0 15px var(--orange-glow);
-      padding: 20px;
+      box-shadow: 0 4px 20px var(--orange-glow);
+      padding: 25px 20px;
       text-align: center;
       position: sticky;
       top: 0;
       z-index: 100;
+      backdrop-filter: blur(10px);
     }
 
-    .logo-container {
+    .header-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .logo-frame {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ff6600 0%, #15151e 70%);
+      padding: 3px;
+      box-shadow: 0 0 20px var(--orange-neon);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;
     }
 
     .logo-img {
-      width: 60px;
-      height: 60px;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
-      border: 2px solid var(--orange-neon);
       object-fit: cover;
-      box-shadow: 0 0 10px var(--orange-neon);
+      background: #15151e;
     }
 
-    header h1 {
-      font-size: 2rem;
+    .brand-title {
+      font-size: 2.2rem;
+      font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 2px;
       color: var(--white);
-      text-shadow: 0 0 8px var(--orange-neon);
+      text-shadow: 0 0 10px var(--orange-neon), 0 0 20px var(--orange-neon);
     }
 
-    header p {
-      color: var(--text-gray);
-      font-size: 0.9rem;
+    .brand-title span {
+      color: var(--red-neon);
+      text-shadow: 0 0 10px var(--red-neon);
+    }
+
+    .brand-subtitle {
+      color: var(--gray-text);
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+    }
+
+    .header-badges {
+      display: flex;
+      gap: 15px;
       margin-top: 5px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
-    /* CONTAINER */
+    .badge {
+      background: rgba(255, 102, 0, 0.15);
+      border: 1px solid var(--orange-neon);
+      color: var(--white);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-shadow: 0 0 5px var(--orange-neon);
+    }
+
+    .badge-red {
+      background: rgba(255, 0, 51, 0.15);
+      border-color: var(--red-neon);
+      text-shadow: 0 0 5px var(--red-neon);
+    }
+
+    /* CONTAINER & CATEGORIES */
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 30px auto;
       padding: 0 20px;
     }
 
-    .section-title {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      border-left: 4px solid var(--red-neon);
-      padding-left: 10px;
-      text-shadow: 0 0 5px var(--red-neon);
+    .category-section {
+      margin-bottom: 40px;
     }
 
-    /* GRID DE CARDÁPIO */
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 25px;
+      border-bottom: 2px solid rgba(255, 102, 0, 0.2);
+      padding-bottom: 10px;
+    }
+
+    .category-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--white);
+      text-shadow: 0 0 8px var(--orange-neon);
+    }
+
+    .category-title.carne {
+      text-shadow: 0 0 8px var(--red-neon);
+    }
+
+    .category-icon {
+      font-size: 1.8rem;
+    }
+
+    /* MENU GRID & CARDS */
     .menu-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 25px;
     }
 
     .card {
       background-color: var(--card-bg);
-      border: 1px solid rgba(255, 102, 0, 0.2);
-      border-radius: 12px;
+      border: 1px solid rgba(255, 102, 0, 0.3);
+      border-radius: 16px;
       overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px var(--orange-glow);
+      transform: translateY(-6px);
       border-color: var(--orange-neon);
+      box-shadow: 0 0 20px var(--orange-glow);
+    }
+
+    .card.top-item {
+      border: 1px solid var(--orange-neon);
+    }
+
+    .badge-top {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: linear-gradient(135deg, var(--red-neon), var(--orange-neon));
+      color: var(--white);
+      font-weight: 900;
+      font-size: 0.75rem;
+      padding: 5px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      box-shadow: 0 0 10px var(--red-neon);
+      z-index: 2;
+    }
+
+    .card-img-container {
+      width: 100%;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      background: #0f0f15;
     }
 
     .card-img {
       width: 100%;
-      height: 180px;
+      height: 100%;
       object-fit: cover;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.5s ease;
     }
 
-    .card-content {
-      padding: 15px;
+    .card:hover .card-img {
+      transform: scale(1.05);
+    }
+
+    .card-body {
+      padding: 18px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
 
     .card-title {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
+      font-weight: 700;
       color: var(--white);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
     }
 
     .card-desc {
-      color: var(--text-gray);
-      font-size: 0.85rem;
-      margin-bottom: 15px;
+      color: var(--gray-text);
+      font-size: 0.88rem;
+      line-height: 1.4;
+      margin-bottom: 18px;
       flex-grow: 1;
+    }
+
+    /* SIZE SELECTOR & CONTROLS */
+    .size-selector {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+      background: #0d0d12;
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .size-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--gray-text);
+      padding: 8px 4px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 700;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .size-btn strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--white);
+    }
+
+    .size-btn.active {
+      background: linear-gradient(135deg, var(--orange-neon), #cc5200);
+      color: var(--white);
+      box-shadow: 0 0 10px var(--orange-glow);
     }
 
     .card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 12px;
     }
 
-    .price {
-      font-size: 1.2rem;
-      font-weight: bold;
+    .selected-price {
+      font-size: 1.35rem;
+      font-weight: 800;
       color: var(--orange-neon);
-      text-shadow: 0 0 5px var(--orange-glow);
+      text-shadow: 0 0 8px var(--orange-glow);
     }
 
-    /* CONTROLES DE QUANTIDADE */
-    .qty-controls {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #0b0b0f;
-      padding: 5px 10px;
-      border-radius: 20px;
-      border: 1px solid var(--orange-neon);
-    }
-
-    .qty-btn {
-      background: none;
-      border: none;
+    .btn-add {
+      background: linear-gradient(135deg, var(--orange-neon), var(--red-neon));
       color: var(--white);
-      font-size: 1.2rem;
-      font-weight: bold;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 20px;
+      font-weight: 700;
       cursor: pointer;
-      width: 25px;
-      height: 25px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      box-shadow: 0 0 10px var(--orange-glow);
+      transition: all 0.2s;
     }
 
-    .qty-btn:hover {
-      color: var(--red-neon);
+    .btn-add:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px var(--red-neon);
     }
 
-    /* PAINEL DE PEDIDO FIXO */
+    /* FLOATING CART BAR */
     .cart-bar {
       position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
-      background: #121218;
+      background: rgba(18, 18, 26, 0.95);
       border-top: 2px solid var(--orange-neon);
-      padding: 15px 20px;
+      padding: 15px 25px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 -5px 25px rgba(0,0,0,0.8);
+      z-index: 200;
+    }
+
+    .cart-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-count {
+      font-size: 0.85rem;
+      color: var(--gray-text);
     }
 
     .cart-total {
-      font-size: 1.1rem;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
     }
 
     .cart-total span {
       color: var(--orange-neon);
-      font-weight: bold;
-      font-size: 1.3rem;
+      text-shadow: 0 0 8px var(--orange-neon);
     }
 
     .btn-checkout {
-      background: linear-gradient(45deg, var(--orange-neon), var(--red-neon));
+      background: linear-gradient(135deg, var(--orange-neon), var(--red-neon));
       color: var(--white);
       border: none;
-      padding: 12px 25px;
-      font-size: 1rem;
-      font-weight: bold;
+      padding: 12px 28px;
+      font-size: 0.95rem;
+      font-weight: 800;
       border-radius: 25px;
       cursor: pointer;
-      box-shadow: 0 0 10px var(--orange-glow);
+      box-shadow: 0 0 15px var(--orange-glow);
       text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s;
     }
 
     .btn-checkout:hover {
-      opacity: 0.9;
+      transform: scale(1.03);
+      box-shadow: 0 0 20px var(--red-neon);
     }
 
-    /* MODAL DE CHECKOUT */
+    /* MODAL STYLING */
     .modal {
       display: none;
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85);
+      background: rgba(0,0,0,0.88);
       z-index: 1000;
       align-items: center;
       justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(5px);
     }
 
     .modal-content {
       background: var(--card-bg);
       border: 2px solid var(--orange-neon);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 480px;
+      max-height: 90vh;
+      overflow-y: auto;
       padding: 25px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 450px;
-      box-shadow: 0 0 20px var(--orange-glow);
+      box-shadow: 0 0 30px var(--orange-glow);
     }
 
-    .modal h2 {
-      margin-bottom: 15px;
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 10px;
+    }
+
+    .modal-title {
+      font-size: 1.4rem;
+      font-weight: 800;
       color: var(--orange-neon);
+      text-transform: uppercase;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: var(--gray-text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .cart-summary {
+      background: #0d0d12;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 20px;
+      max-height: 180px;
+      overflow-y: auto;
+      border: 1px solid rgba(255,102,0,0.2);
+    }
+
+    .cart-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+    }
+
+    .cart-item-row:last-child {
+      border-bottom: none;
+    }
+
+    .remove-item {
+      color: var(--red-neon);
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 10px;
     }
 
     .form-group {
@@ -250,180 +459,463 @@
 
     .form-group label {
       display: block;
-      margin-bottom: 5px;
-      font-size: 0.9rem;
+      margin-bottom: 6px;
+      font-size: 0.85rem;
+      color: var(--gray-light);
+      font-weight: 600;
     }
 
-    .form-group input, .form-group select {
+    .form-group input {
       width: 100%;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #333;
-      background: #0b0b0f;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,102,0,0.4);
+      background: #09090d;
       color: #fff;
+      font-size: 0.95rem;
+      outline: none;
     }
 
     .pix-box {
-      background: #0b0b0f;
+      background: #0a0a0f;
       border: 1px dashed var(--orange-neon);
       padding: 15px;
       text-align: center;
-      border-radius: 8px;
-      margin-top: 15px;
+      border-radius: 10px;
+      margin: 15px 0;
     }
 
     .pix-key {
-      color: var(--red-neon);
-      font-weight: bold;
-      font-size: 0.9rem;
-      margin-top: 5px;
+      color: var(--orange-neon);
+      font-weight: 800;
+      font-size: 0.95rem;
+      margin-top: 6px;
+      background: #15151e;
+      padding: 8px;
+      border-radius: 6px;
+      cursor: pointer;
       word-break: break-all;
     }
 
-    .btn-close {
-      background: #333;
-      color: #fff;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
-      width: 100%;
+    @media (max-width: 600px) {
+      .brand-title { font-size: 1.7rem; }
+      .category-title { font-size: 1.4rem; }
+      .cart-bar { padding: 12px 15px; }
+      .btn-checkout { padding: 10px 18px; font-size: 0.85rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER / LOGO -->
+  <!-- HEADER & LOGO -->
   <header>
-    <div class="logo-container">
-      <!-- Substitua a URL abaixo pela imagem do seu logo -->
-      <img src="https://via.placeholder.com/60/ff6600/ffffff?text=LOGO" alt="Logo Marmitaria" class="logo-img">
-      <h1>Marmitaria Neon</h1>
+    <div class="header-content">
+      <div class="logo-frame">
+        <!-- COLOQUE A SUA LOGO AQUI (SUBSTITUA A URL DEBAIXO) -->
+        <img src="https://via.placeholder.com/150/ff6600/ffffff?text=Vovó" alt="Logo Cantinho da Vovó" class="logo-img">
+      </div>
+      <h1 class="brand-title">Cantinho da <span>Vovó</span></h1>
+      <p class="brand-subtitle">MARMITAS CASEIRAS • QUALIDADE & SABOR NEON</p>
+      
+      <div class="header-badges">
+        <span class="badge">⚡ Retirada no Balcão</span>
+        <span class="badge badge-red">❖ Pagamento PIX</span>
+        <span class="badge">🔥 Comida Quentinha</span>
+      </div>
     </div>
-    <p>Comida caseira com sabor inigualável • Retirada no Local</p>
   </header>
 
+  <!-- CONTEÚDO PRINCIPAL -->
   <div class="container">
-    <h2 class="section-title">Escolha suas Marmitas</h2>
 
-    <!-- CARDÁPIO -->
-    <div class="menu-grid" id="menu">
-      <!-- Item 1 -->
-      <div class="card" data-id="1" data-name="Marmita Tradicional" data-price="18.00">
-        <!-- Substitua a URL abaixo pela imagem da marmita -->
-        <img src="https://via.placeholder.com/300x180/16161e/ff6600?text=Tradicional" alt="Marmita Tradicional" class="card-img">
-        <div class="card-content">
-          <h3 class="card-title">Marmita Tradicional</h3>
-          <p class="card-desc">Arroz branco, feijão carioquinha, bife acebolado e farofa da casa.</p>
-          <div class="card-footer">
-            <span class="price">R$ 18,00</span>
-            <div class="qty-controls">
-              <button class="qty-btn" onclick="updateQty(1, -1)">-</button>
-              <span id="qty-1">0</span>
-              <button class="qty-btn" onclick="updateQty(1, 1)">+</button>
-            </div>
-          </div>
-        </div>
+    <!-- MENU FRANGO -->
+    <div class="category-section">
+      <div class="category-header">
+        <span class="category-icon">🍗</span>
+        <h2 class="category-title">Menu Frango</h2>
       </div>
 
-      <!-- Item 2 -->
-      <div class="card" data-id="2" data-name="Marmita Fitness" data-price="22.00">
-        <img src="https://via.placeholder.com/300x180/16161e/ff6600?text=Fitness" alt="Marmita Fitness" class="card-img">
-        <div class="card-content">
-          <h3 class="card-title">Marmita Fitness</h3>
-          <p class="card-desc">Arroz integral, frango grelhado em tiras, brócolis e batata doce.</p>
-          <div class="card-footer">
-            <span class="price">R$ 22,00</span>
-            <div class="qty-controls">
-              <button class="qty-btn" onclick="updateQty(2, -1)">-</button>
-              <span id="qty-2">0</span>
-              <button class="qty-btn" onclick="updateQty(2, 1)">+</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="menu-grid">
 
-      <!-- Item 3 -->
-      <div class="card" data-id="3" data-name="Marmita Especial Feijoada" data-price="25.00">
-        <img src="https://via.placeholder.com/300x180/16161e/ff6600?text=Feijoada" alt="Marmita Feijoada" class="card-img">
-        <div class="card-content">
-          <h3 class="card-title">Marmita Feijoada</h3>
-          <p class="card-desc">Feijoada completa, arroz, couve refogada, farofa e torresmo crocante.</p>
-          <div class="card-footer">
-            <span class="price">R$ 25,00</span>
-            <div class="qty-controls">
-              <button class="qty-btn" onclick="updateQty(3, -1)">-</button>
-              <span id="qty-3">0</span>
-              <button class="qty-btn" onclick="updateQty(3, 1)">+</button>
+        <!-- FRANGO A PARMEGIANA -->
+        <div class="card top-item">
+          <span class="badge-top">⭐ TOP 1</span>
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?auto=format&fit=crop&w=600&q=80" alt="Frango a Parmegiana" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Frango a Parmegiana</h3>
+            <p class="card-desc">Acompanha arroz branco e batata frita crocante.</p>
+            
+            <div class="size-selector" data-item="parmegiana-frango">
+              <button class="size-btn active" onclick="selectSize(this, 'P', 17.90)">P<strong>R$ 17,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'M', 19.90)">M<strong>R$ 19,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'G', 21.90)">G<strong>R$ 21,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-parmegiana-frango">R$ 17,90</span>
+              <button class="btn-add" onclick="addToCart('Frango a Parmegiana', 'parmegiana-frango')">+ Adicionar</button>
             </div>
           </div>
         </div>
+
+        <!-- FRANGO GRELHADO -->
+        <div class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=600&q=80" alt="Frango Grelhado" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Frango Grelhado</h3>
+            <p class="card-desc">Acompanha arroz, feijão, macarrão, batata e farofa.</p>
+            
+            <div class="size-selector" data-item="frango-grelhado">
+              <button class="size-btn active" onclick="selectSize(this, 'P', 14.90)">P<strong>R$ 14,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'M', 16.90)">M<strong>R$ 16,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'G', 18.90)">G<strong>R$ 18,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-frango-grelhado">R$ 14,90</span>
+              <button class="btn-add" onclick="addToCart('Frango Grelhado', 'frango-grelhado')">+ Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- FRANGO A MILANESA -->
+        <div class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80" alt="Frango a Milanesa" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Frango a Milanesa</h3>
+            <p class="card-desc">Acompanha arroz, feijão, macarrão, batata e farofa.</p>
+            
+            <div class="size-selector" data-item="frango-milanesa">
+              <button class="size-btn active" onclick="selectSize(this, 'P', 15.90)">P<strong>R$ 15,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'M', 17.90)">M<strong>R$ 17,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'G', 19.90)">G<strong>R$ 19,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-frango-milanesa">R$ 15,90</span>
+              <button class="btn-add" onclick="addToCart('Frango a Milanesa', 'frango-milanesa')">+ Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STROGONOFF DE FRANGO -->
+        <div class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=600&q=80" alt="Strogonoff de Frango" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Strogonoff de Frango</h3>
+            <p class="card-desc">Acompanha arroz e batata palha.</p>
+            
+            <div class="size-selector" data-item="strogonoff-frango">
+              <button class="size-btn active" onclick="selectSize(this, 'P', 18.90)">P<strong>R$ 18,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'M', 19.90)">M<strong>R$ 19,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'G', 20.90)">G<strong>R$ 20,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-strogonoff-frango">R$ 18,90</span>
+              <button class="btn-add" onclick="addToCart('Strogonoff de Frango', 'strogonoff-frango')">+ Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- OVO FRITO -->
+        <div class="card">
+          <span class="badge-top" style="background: linear-gradient(135deg, #ffcc00, #ff6600);">🍳 COM OVO</span>
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80" alt="Ovo Frito" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Ovo Frito</h3>
+            <p class="card-desc">Acompanha arroz, feijão, macarrão, batata e farofa.</p>
+            
+            <div class="size-selector" data-item="ovo-frito">
+              <button class="size-btn active" onclick="selectSize(this, 'P', 14.90)">P<strong>R$ 14,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'M', 16.90)">M<strong>R$ 16,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'G (+1 Ovo)', 18.90)">G (+1 Ovo)<strong>R$ 18,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-ovo-frito">R$ 14,90</span>
+              <button class="btn-add" onclick="addToCart('Ovo Frito', 'ovo-frito')">+ Adicionar</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
+
+
+    <!-- MENU CARNE -->
+    <div class="category-section">
+      <div class="category-header">
+        <span class="category-icon">🥩</span>
+        <h2 class="category-title carne">Menu Carne</h2>
+      </div>
+
+      <div class="menu-grid">
+
+        <!-- BIFE GRELHADO -->
+        <div class="card top-item">
+          <span class="badge-top">⭐ TOP 2</span>
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Bife Grelhado" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Bife Grelhado</h3>
+            <p class="card-desc">Acompanha arroz, feijão, macarrão, batata e farofa.</p>
+            
+            <div class="size-selector" data-item="bife-grelhado">
+              <button class="size-btn active" onclick="selectSize(this, 'P', 16.90)">P<strong>R$ 16,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'M', 18.90)">M<strong>R$ 18,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'G', 19.90)">G<strong>R$ 19,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-bife-grelhado">R$ 16,90</span>
+              <button class="btn-add" onclick="addToCart('Bife Grelhado', 'bife-grelhado')">+ Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BIFE ACEBOLADO -->
+        <div class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=600&q=80" alt="Bife Acebolado" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Bife Acebolado</h3>
+            <p class="card-desc">Acompanha arroz, feijão, macarrão, batata e farofa.</p>
+            
+            <div class="size-selector" data-item="bife-acebolado">
+              <button class="size-btn active" onclick="selectSize(this, 'P', 17.90)">P<strong>R$ 17,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'M', 19.90)">M<strong>R$ 19,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'G', 21.90)">G<strong>R$ 21,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-bife-acebolado">R$ 17,90</span>
+              <button class="btn-add" onclick="addToCart('Bife Acebolado', 'bife-acebolado')">+ Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BIFE A PARMEGIANA -->
+        <div class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1560781290-7dc94c0f8f4f?auto=format&fit=crop&w=600&q=80" alt="Bife a Parmegiana" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Bife a Parmegiana</h3>
+            <p class="card-desc">Acompanha arroz e batata frita.</p>
+            
+            <div class="size-selector" data-item="bife-parmegiana">
+              <button class="size-btn active" onclick="selectSize(this, 'P', 19.90)">P<strong>R$ 19,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'M', 21.90)">M<strong>R$ 21,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'G', 23.90)">G<strong>R$ 23,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-bife-parmegiana">R$ 19,90</span>
+              <button class="btn-add" onclick="addToCart('Bife a Parmegiana', 'bife-parmegiana')">+ Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BIFE A CAVALO -->
+        <div class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=600&q=80" alt="Bife a Cavalo" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Bife a Cavalo</h3>
+            <p class="card-desc">Acompanha arroz, feijão, macarrão, batata e farofa.</p>
+            
+            <div class="size-selector" data-item="bife-cavalo">
+              <button class="size-btn active" onclick="selectSize(this, 'P', 17.90)">P<strong>R$ 17,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'M', 19.90)">M<strong>R$ 19,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'G', 21.90)">G<strong>R$ 21,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-bife-cavalo">R$ 17,90</span>
+              <button class="btn-add" onclick="addToCart('Bife a Cavalo', 'bife-cavalo')">+ Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STROGONOFF DE CARNE -->
+        <div class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80" alt="Strogonoff de Carne" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Strogonoff de Carne</h3>
+            <p class="card-desc">Acompanha arroz e batata palha.</p>
+            
+            <div class="size-selector" data-item="strogonoff-carne">
+              <button class="size-btn active" onclick="selectSize(this, 'P', 18.90)">P<strong>R$ 18,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'M', 20.90)">M<strong>R$ 20,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'G', 21.90)">G<strong>R$ 21,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-strogonoff-carne">R$ 18,90</span>
+              <button class="btn-add" onclick="addToCart('Strogonoff de Carne', 'strogonoff-carne')">+ Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- BIFE A MILANESA -->
+        <div class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=600&q=80" alt="Bife a Milanesa" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Bife a Milanesa</h3>
+            <p class="card-desc">Acompanha arroz, feijão, macarrão, batata e farofa.</p>
+            
+            <div class="size-selector" data-item="bife-milanesa">
+              <button class="size-btn active" onclick="selectSize(this, 'P', 17.90)">P<strong>R$ 17,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'M', 19.90)">M<strong>R$ 19,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'G', 21.90)">G<strong>R$ 21,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-bife-milanesa">R$ 17,90</span>
+              <button class="btn-add" onclick="addToCart('Bife a Milanesa', 'bife-milanesa')">+ Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
-  <!-- BARRA DE PEDIDO FIXA -->
+  <!-- BARRA DE PEDIDOS FLUTUANTE -->
   <div class="cart-bar">
-    <div class="cart-total">Total: <span id="total-price">R$ 0,00</span></div>
-    <button class="btn-checkout" onclick="openModal()">Finalizar Pedido</button>
+    <div class="cart-info">
+      <span class="cart-count" id="cart-count">0 marmita(s) selecionada(s)</span>
+      <div class="cart-total">Total: <span id="cart-total">R$ 0,00</span></div>
+    </div>
+    <button class="btn-checkout" onclick="openModal()">Ver Pedido & Retirar ➔</button>
   </div>
 
-  <!-- MODAL DE PAGAMENTO E RETIRADA -->
+  <!-- MODAL DE CONFIRMAÇÃO & PIX -->
   <div class="modal" id="checkout-modal">
     <div class="modal-content">
-      <h2>Finalizar e Retirar</h2>
-      
-      <div class="form-group">
-        <label>Seu Nome:</label>
-        <input type="text" id="client-name" placeholder="Digite seu nome completo">
+      <div class="modal-header">
+        <h2 class="modal-title">Seu Pedido</h2>
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+      </div>
+
+      <div class="cart-summary" id="cart-summary-list">
+        <!-- Itens aparecem aqui -->
       </div>
 
       <div class="form-group">
-        <label>Forma de Retirada:</label>
-        <input type="text" value="Retirada na Loja (Balcão)" disabled>
+        <label for="client-name">Nome Completo do Cliente:</label>
+        <input type="text" id="client-name" placeholder="Ex: João Silva">
+      </div>
+
+      <div class="form-group">
+        <label>Opção de Retirada:</label>
+        <input type="text" value="📍 Retirada Presencial na Loja (Balcão)" disabled>
       </div>
 
       <div class="pix-box">
-        <p><strong>Pagamento via PIX</strong></p>
-        <p style="font-size: 0.8rem; color: var(--text-gray);">Faça o PIX no valor total e apresente o comprovante na retirada.</p>
-        <p class="pix-key">Chave PIX (CNPJ/E-mail):<br>sua-chave-pix-aqui@marmitaria.com</p>
+        <p style="font-size: 0.9rem; font-weight: bold;">💸 Pagamento via PIX</p>
+        <p style="font-size: 0.8rem; color: var(--gray-text); margin-top: 4px;">Clique abaixo para copiar a chave PIX. Apresente o comprovante na retirada.</p>
+        <!-- INSIRA SUA CHAVE PIX REAL ABAIXO -->
+        <div class="pix-key" onclick="copyPixKey()">cantinhodavovo.pix@gmail.com 📋</div>
+        <span id="copy-msg" style="display:none; font-size:0.75rem; color: var(--orange-neon); margin-top:4px;">Chave copiada!</span>
       </div>
 
-      <button class="btn-checkout" style="width: 100%; margin-top: 15px;" onclick="sendOrder()">Confirmar e Enviar Pedido</button>
-      <button class="btn-close" onclick="closeModal()">Cancelar</button>
+      <button class="btn-checkout" style="width: 100%; margin-top: 10px;" onclick="confirmOrder()">Confirmar Pedido</button>
     </div>
   </div>
 
   <script>
-    const items = {
-      1: { name: "Marmita Tradicional", price: 18.00, qty: 0 },
-      2: { name: "Marmita Fitness", price: 22.00, qty: 0 },
-      3: { name: "Marmita Especial Feijoada", price: 25.00, qty: 0 }
-    };
+    const selectedState = {};
+    let cart = [];
 
-    function updateQty(id, change) {
-      if (items[id].qty + change >= 0) {
-        items[id].qty += change;
-        document.getElementById(`qty-${id}`).innerText = items[id].qty;
-        calculateTotal();
-      }
+    // Inicializa seleção padrão dos botões de tamanho (P, M, G)
+    document.querySelectorAll('.size-selector').forEach(selector => {
+      const itemId = selector.getAttribute('data-item');
+      const activeBtn = selector.querySelector('.size-btn.active');
+      const sizeStr = activeBtn.innerText.split('R$')[0].trim();
+      const priceVal = parseFloat(activeBtn.innerText.split('R$')[1].replace(',', '.').trim());
+      
+      selectedState[itemId] = { size: sizeStr, price: priceVal };
+    });
+
+    function selectSize(btnElement, size, price) {
+      const selector = btnElement.parentElement;
+      const itemId = selector.getAttribute('data-item');
+      
+      selector.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
+      btnElement.classList.add('active');
+
+      selectedState[itemId] = { size: size, price: price };
+      document.getElementById(`price-${itemId}`).innerText = `R$ ${price.toFixed(2).replace('.', ',')}`;
     }
 
-    function calculateTotal() {
-      let total = 0;
-      for (let id in items) {
-        total += items[id].qty * items[id].price;
+    function addToCart(title, itemId) {
+      const current = selectedState[itemId];
+      cart.push({ title: title, size: current.size, price: current.price });
+      updateCartBar();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartBar();
+      renderCartSummary();
+    }
+
+    function updateCartBar() {
+      const count = cart.length;
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+      document.getElementById('cart-count').innerText = `${count} marmita(s) selecionada(s)`;
+      document.getElementById('cart-total').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+
+    function renderCartSummary() {
+      const container = document.getElementById('cart-summary-list');
+      if (cart.length === 0) {
+        container.innerHTML = `<p style="text-align:center; color: var(--gray-text); font-size: 0.9rem;">Seu carrinho está vazio.</p>`;
+        return;
       }
-      document.getElementById('total-price').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
-      return total;
+
+      let html = '';
+      cart.forEach((item, index) => {
+        html += `
+          <div class="cart-item-row">
+            <div><strong>${item.title}</strong> (${item.size})</div>
+            <div>
+              <span>R$ ${item.price.toFixed(2).replace('.', ',')}</span>
+              <span class="remove-item" onclick="removeFromCart(${index})">✕</span>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
     }
 
     function openModal() {
-      if (calculateTotal() === 0) {
-        alert("Selecione pelo menos uma marmita antes de finalizar!");
+      if (cart.length === 0) {
+        alert("Por favor, selecione ao menos uma marmita antes de finalizar!");
         return;
       }
+      renderCartSummary();
       document.getElementById('checkout-modal').style.display = 'flex';
     }
 
@@ -431,14 +923,25 @@
       document.getElementById('checkout-modal').style.display = 'none';
     }
 
-    function sendOrder() {
-      const name = document.getElementById('client-name').value;
+    function copyPixKey() {
+      navigator.clipboard.writeText("cantinhodavovo.pix@gmail.com");
+      const msg = document.getElementById('copy-msg');
+      msg.style.display = 'block';
+      setTimeout(() => { msg.style.display = 'none'; }, 2000);
+    }
+
+    function confirmOrder() {
+      const name = document.getElementById('client-name').value.trim();
       if (!name) {
-        alert("Por favor, informe seu nome.");
+        alert("Por favor, digite seu nome para identificação do pedido.");
         return;
       }
 
-      alert(`Obrigado, ${name}! Seu pedido foi registrado para RETIRADA NA LOJA. Faça o PIX e mostre o comprovante ao retirar.`);
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      alert(`Obrigado pelo pedido, ${name}!\n\nSeu pedido totalizou R$ ${total.toFixed(2).replace('.', ',')}.\n\nRealize o pagamento via PIX e apresente o comprovante na RETIRADA NA LOJA.`);
+      
+      cart = [];
+      updateCartBar();
       closeModal();
     }
   </script>
