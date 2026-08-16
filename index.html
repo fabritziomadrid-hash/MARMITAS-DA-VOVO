@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marmiteria - Sabor & Energia</title>
+    <style>
+        :root {
+            --orange-neon: #FF6600;
+            --orange-bright: #FF4500;
+            --red-neon: #FF0033;
+            --bg-dark: #120A07;
+            --card-bg: #1F100B;
+            --text-light: #FFFFFF;
+            --green-pix: #32BCAD;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding-bottom: 120px;
+        }
+
+        .language-picker-container {
+            background-color: #0a0503;
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 102, 0, 0.3);
+        }
+
+        .audio-player-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .audio-player-container audio {
+            height: 30px;
+            max-width: 200px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--red-neon), var(--orange-bright), var(--orange-neon));
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            box-shadow: 0 4px 20px rgba(255, 102, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-container {
+            margin-bottom: 1rem;
+        }
+
+        .logo-img {
+            max-width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #FFFFFF;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            background-color: var(--card-bg);
+            object-fit: cover;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            letter-spacing: 1.5px;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #FFFFFF;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 1.5rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            color: var(--orange-neon);
+            border-left: 5px solid var(--red-neon);
+            padding-left: 0.8rem;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px rgba(255, 102, 0, 0.4);
+        }
+
+        .step-box {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 102, 0, 0.4);
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .option-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 102, 0, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .option-card:hover {
+            border-color: var(--orange-neon);
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .option-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .option-card strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: #FFFFFF;
+        }
+
+        .price-tag {
+            color: var(--orange-neon);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 5px rgba(255, 102, 0, 0.5);
+        }
+
+        .btn-details {
+            background: transparent;
+            border: 1px solid var(--red-neon);
+            color: #FFFFFF;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-bottom: 0.6rem;
+            transition: all 0.2s;
+        }
+
+        .btn-details:hover {
+            background: var(--red-neon);
+            box-shadow: 0 0 10px rgba(255, 0, 51, 0.6);
+        }
+
+        .select-input, .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid var(--orange-neon);
+            background: #2A150D;
+            color: white;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .select-input:focus, .form-control:focus {
+            outline: none;
+            border-color: #FFFFFF;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+
+        .qty-select {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--orange-neon);
+            background: #2A150D;
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+
+        .pix-badge {
+            background-color: var(--green-pix);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            box-shadow: 0 0 10px rgba(50, 188, 173, 0.4);
+        }
+
+        .cart-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, #120A07, #2A150D);
+            border-top: 2px solid var(--orange-neon);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 -4px 20px rgba(255, 102, 0, 0.3);
+        }
+
+        .cart-info {
+            font-size: 1.2rem;
+        }
+
+        .btn-order {
+            background: linear-gradient(45deg, var(--red-neon), var(--orange-neon));
+            color: white;
+            border: none;
+            padding: 0.9rem 1.8rem;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.6);
+            transition: transform 0.2s;
+        }
+
+        .btn-order:hover {
+            transform: scale(1.05);
+        }
+
+        /* Modal de Detalhes */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 2px solid var(--orange-neon);
+            border-radius: 12px;
+            padding: 1.5rem;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(255, 102, 0, 0.5);
+        }
+
+        .modal-content h3 {
+            color: var(--orange-neon);
+            margin-bottom: 0.8rem;
+        }
+
+        .modal-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.4;
+        }
+
+        .btn-close-modal {
+            background: var(--red-neon);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="language-picker-container">
+        <div class="audio-player-container">
+            <span style="font-size: 0.8rem; color: #ccc;">🎵 Som ambiente:</span>
+            <audio id="bg-music" controls loop autoplay>
+                <!-- Substitua pelo caminho do seu arquivo de áudio se desejar -->
+                <source src="audio/musica.mp3" type="audio/mpeg">
+                Navegador sem suporte a áudio HTML5.
+            </audio>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <!-- Insira aqui o caminho da imagem da sua logo -->
+            <img src="imagens/logomarmita.png" alt="Logo Marmiteria" class="logo-img">
+        </div>
+        <h1>🍱 MARMITERIA DO CHEF 🍱</h1>
+        <p class="tagline">Comida caseira, fresca e cheia de sabor!</p>
+    </header>
+
+    <div class="container">
+
+        <h2 class="section-title">Opções do Cardápio</h2>
+        <div class="step-box">
+            <div class="options-grid">
+
+                <!-- Item 1 -->
+                <div class="option-card">
+                    <img src="imagens/marmita_executiva.png" alt="Marmita Executiva">
+                    <strong>1. Executiva Tradicional</strong>
+                    <span class="price-tag">R$ 22,00</span>
+                    <button type="button" class="btn-details" onclick="mostrarDetalhes('Executiva Tradicional', 'Acompanha: Arroz soltinho, feijão caseiro, bife acebolado macio, batata frita crocante e salada verde.')">Detalhes</button>
+                    <select class="select-input item-marmita" id="marmita_1" data-nome="Executiva Tradicional" data-preco="22.00" onchange="calcularTotal()">
+                        <option value="0">-- Escolher Tamanho --</option>
+                        <option value="M">Tamanho M (500g) - R$ 22,00</option>
+                        <option value="G">Tamanho G (750g) - R$ 26,00</option>
+                    </select>
+                    <select id="qtd_marmita_1" class="qty-select" onchange="calcularTotal()">
+                        <option value="1">Qtd: x1</option>
+                        <option value="2">Qtd: x2</option>
+                        <option value="3">Qtd: x3</option>
+                        <option value="4">Qtd: x4</option>
+                        <option value="5">Qtd: x5</option>
+                    </select>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="option-card">
+                    <img src="imagens/marmita_fit.png" alt="Marmita Fit">
+                    <strong>2. Fitness Frango & Batata Doce</strong>
+                    <span class="price-tag">R$ 20,00</span>
+                    <button type="button" class="btn-details" onclick="mostrarDetalhes('Fitness Frango & Batata Doce', 'Acompanha: Peito de frango grelhado temperado com ervas, batata doce assada e brócolis no vapor.')">Detalhes</button>
+                    <select class="select-input item-marmita" id="marmita_2" data-nome="Fitness Frango & Batata Doce" data-preco="20.00" onchange="calcularTotal()">
+                        <option value="0">-- Escolher Tamanho --</option>
+                        <option value="M">Tamanho M (400g) - R$ 20,00</option>
+                        <option value="G">Tamanho G (600g) - R$ 24,00</option>
+                    </select>
+                    <select id="qtd_marmita_2" class="qty-select" onchange="calcularTotal()">
+                        <option value="1">Qtd: x1</option>
+                        <option value="2">Qtd: x2</option>
+                        <option value="3">Qtd: x3</option>
+                        <option value="4">Qtd: x4</option>
+                        <option value="5">Qtd: x5</option>
+                    </select>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="option-card">
+                    <img src="imagens/marmita_feijoada.png" alt="Marmita Feijoada">
+                    <strong>3. Feijoada Completa</strong>
+                    <span class="price-tag">R$ 28,00</span>
+                    <button type="button" class="btn-details" onclick="mostrarDetalhes('Feijoada Completa', 'Feijoada tradicional com carnes nobres, arroz branco, couve refogada no alho, farofa e torresmo.')">Detalhes</button>
+                    <select class="select-input item-marmita" id="marmita_3" data-nome="Feijoada Completa" data-preco="28.00" onchange="calcularTotal()">
+                        <option value="0">-- Escolher Tamanho --</option>
+                        <option value="M">Tamanho M (500g) - R$ 28,00</option>
+                        <option value="G">Tamanho G (800g) - R$ 34,00</option>
+                    </select>
+                    <select id="qtd_marmita_3" class="qty-select" onchange="calcularTotal()">
+                        <option value="1">Qtd: x1</option>
+                        <option value="2">Qtd: x2</option>
+                        <option value="3">Qtd: x3</option>
+                        <option value="4">Qtd: x4</option>
+                        <option value="5">Qtd: x5</option>
+                    </select>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="option-card">
+                    <img src="imagens/marmita_veggie.png" alt="Marmita Vegetariana">
+                    <strong>4. Vegetariana Especial</strong>
+                    <span class="price-tag">R$ 21,00</span>
+                    <button type="button" class="btn-details" onclick="mostrarDetalhes('Vegetariana Especial', 'Arroz integral, lentilha temperada, hambúrguer de grão de bico e legumes grelhados.')">Detalhes</button>
+                    <select class="select-input item-marmita" id="marmita_4" data-nome="Vegetariana Especial" data-preco="21.00" onchange="calcularTotal()">
+                        <option value="0">-- Escolher Tamanho --</option>
+                        <option value="M">Tamanho M (450g) - R$ 21,00</option>
+                        <option value="G">Tamanho G (650g) - R$ 25,00</option>
+                    </select>
+                    <select id="qtd_marmita_4" class="qty-select" onchange="calcularTotal()">
+                        <option value="1">Qtd: x1</option>
+                        <option value="2">Qtd: x2</option>
+                        <option value="3">Qtd: x3</option>
+                        <option value="4">Qtd: x4</option>
+                        <option value="5">Qtd: x5</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
+        <h2 class="section-title">Finalizar Pedido</h2>
+        <div class="step-box">
+            <div class="form-group">
+                <label for="nome">Seu Nome:</label>
+                <input type="text" id="nome" class="form-control" placeholder="Digite seu nome completo">
+            </div>
+
+            <div class="form-group">
+                <label for="tipo_entrega">Opção de Entrega / Retirada:</label>
+                <select id="tipo_entrega" class="select-input" onchange="alternarCampoEndereco(this.value)">
+                    <option value="entrega">🚚 Entrega (Delivery)</option>
+                    <option value="retirada">🏪 Retirar na Loja</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="grupo_endereco">
+                <label for="endereco">Endereço de Entrega:</label>
+                <input type="text" id="endereco" class="form-control" placeholder="Rua, Número, Bairro e Ponto de Referência">
+            </div>
+
+            <div class="form-group">
+                <label>Forma de Pagamento:</label><br>
+                <div class="pix-badge">❖ PAGAMENTO VIA PIX</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="cart-bar">
+        <div class="cart-info">
+            Total: <strong id="totalValue" style="color: var(--orange-neon);">R$ 0,00</strong>
+        </div>
+        <button type="button" class="btn-order" onclick="enviarPedido()">Enviar Pedido 🚀</button>
+    </div>
+
+    <!-- Modal de Detalhes -->
+    <div id="modalDetalhes" class="modal-overlay">
+        <div class="modal-content">
+            <h3 id="modalTitulo">Nome da Marmita</h3>
+            <p id="modalTexto">Descrição do item aqui...</p>
+            <button class="btn-close-modal" onclick="fecharModal()">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        // Insira aqui o seu número do WhatsApp com DDD (apenas números)
+        const SEU_NUMERO_WHATSAPP = "5541987026386";
+
+        // Tenta tocar música no primeiro clique se autoplay for bloqueado
+        document.addEventListener('click', function() {
+            const audio = document.getElementById('bg-music');
+            if (audio && audio.paused) {
+                audio.volume = 0.3;
+                audio.play().catch(e => console.log("Aguardando interação."));
+            }
+        }, { once: true });
+
+        function mostrarDetalhes(titulo, descricao) {
+            document.getElementById('modalTitulo').innerText = titulo;
+            document.getElementById('modalTexto').innerText = descricao;
+            document.getElementById('modalDetalhes').style.display = 'flex';
+        }
+
+        function fecharModal() {
+            document.getElementById('modalDetalhes').style.display = 'none';
+        }
+
+        function alternarCampoEndereco(valor) {
+            const grupoEndereco = document.getElementById('grupo_endereco');
+            if (valor === 'retirada') {
+                grupoEndereco.style.display = 'none';
+            } else {
+                grupoEndereco.style.display = 'block';
+            }
+        }
+
+        function calcularTotal() {
+            let total = 0;
+
+            document.querySelectorAll('.item-marmita').forEach(select => {
+                if (select.value !== "0") {
+                    const id = select.id;
+                    let precoBase = parseFloat(select.getAttribute('data-preco'));
+                    
+                    // Ajuste de preço para tamanho G
+                    if (select.value === 'G') {
+                        precoBase += 4.00; // Diferença adicional para o tamanho G
+                    }
+
+                    const qtd = parseInt(document.getElementById(`qtd_${id}`).value);
+                    total += precoBase * qtd;
+                }
+            });
+
+            document.getElementById('totalValue').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            return total;
+        }
+
+        function enviarPedido() {
+            const total = calcularTotal();
+            if (total === 0) {
+                alert('Selecione pelo menos uma marmita para realizar o pedido!');
+                return;
+            }
+
+            const nome = document.getElementById('nome').value.trim();
+            const tipoEntrega = document.getElementById('tipo_entrega').value;
+            const endereco = document.getElementById('endereco').value.trim();
+
+            if (!nome) {
+                alert('Por favor, informe seu Nome!');
+                return;
+            }
+
+            if (tipoEntrega === 'entrega' && !endereco) {
+                alert('Por favor, informe seu Endereço de Entrega!');
+                return;
+            }
+
+            let msg = `🍱 *NOVO PEDIDO - MARMITERIA DO CHEF* 🍱\n\n`;
+            msg += `👤 *Cliente:* ${nome}\n`;
+            
+            if (tipoEntrega === 'retirada') {
+                msg += `🏪 *Opção:* Retirar na Loja\n\n`;
+            } else {
+                msg += `🚚 *Opção:* Entrega (Delivery)\n`;
+                msg += `📍 *Endereço:* ${endereco}\n\n`;
+            }
+
+            msg += `📋 *ITENS SOLICITADOS:*\n`;
+
+            document.querySelectorAll('.item-marmita').forEach(select => {
+                if (select.value !== "0") {
+                    const id = select.id;
+                    const nomeMarmita = select.getAttribute('data-nome');
+                    const tamanho = select.value;
+                    const qtd = document.getElementById(`qtd_${id}`).value;
+                    msg += `- ${qtd}x ${nomeMarmita} (Tam: ${tamanho})\n`;
+                }
+            });
+
+            msg += `\n💰 *Total do Pedido:* R$ ${total.toFixed(2).replace('.', ',')}\n`;
+            msg += `💳 *Forma de Pagamento:* PIX`;
+
+            const encoded = encodeURIComponent(msg);
+            window.open(`https://wa.me/${SEU_NUMERO_WHATSAPP}?text=${encoded}`, '_blank');
+        }
+    </script>
+</body>
+</html>
