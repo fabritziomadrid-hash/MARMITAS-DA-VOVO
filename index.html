@@ -1,519 +1,446 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marmitaria Neon - Cardápio & Pedidos</title>
-    <style>
-        /* --- VARIÁVEIS DE CORES E ESTILO NEON --- */
-        :root {
-            --bg-color: #0d0d0d;
-            --card-bg: #181818;
-            --text-color: #ffffff;
-            --orange-neon: #ff6600;
-            --orange-glow: rgba(255, 102, 0, 0.6);
-            --red-neon: #ff0033;
-            --red-glow: rgba(255, 0, 51, 0.5);
-            --white-glow: rgba(255, 255, 255, 0.8);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marmitaria Neon | Pedidos Online</title>
+  <style>
+    /* VARIABLES & RESET */
+    :root {
+      --bg-color: #0b0b0f;
+      --card-bg: #16161e;
+      --orange-neon: #ff6600;
+      --orange-glow: rgba(ff, 102, 0, 0.4);
+      --red-neon: #ff0033;
+      --white: #ffffff;
+      --text-gray: #a0a0b0;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            padding-bottom: 60px;
-        }
+    body {
+      background-color: var(--bg-color);
+      color: var(--white);
+      padding-bottom: 80px;
+    }
 
-        /* --- CABEÇALHO & LOGO --- */
-        header {
-            text-align: center;
-            padding: 30px 20px;
-            background-color: #121212;
-            border-bottom: 2px solid var(--orange-neon);
-            box-shadow: 0 0 15px var(--orange-glow);
-        }
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #121218, #0b0b0f);
+      border-bottom: 2px solid var(--orange-neon);
+      box-shadow: 0 0 15px var(--orange-glow);
+      padding: 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-        .logo-placeholder {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 15px;
-            border-radius: 50%;
-            border: 3px solid var(--orange-neon);
-            box-shadow: 0 0 15px var(--orange-glow);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #000;
-            overflow: hidden;
-        }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
 
-        .logo-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .logo-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid var(--orange-neon);
+      object-fit: cover;
+      box-shadow: 0 0 10px var(--orange-neon);
+    }
 
-        header h1 {
-            color: #fff;
-            font-size: 2.2rem;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px var(--orange-neon), 0 0 20px var(--orange-neon);
-        }
+    header h1 {
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--white);
+      text-shadow: 0 0 8px var(--orange-neon);
+    }
 
-        header p {
-            color: var(--red-neon);
-            font-weight: bold;
-            margin-top: 5px;
-            text-shadow: 0 0 8px var(--red-glow);
-        }
+    header p {
+      color: var(--text-gray);
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
 
-        /* --- LAYOUT PRINCIPAL --- */
-        .container {
-            max-width: 1100px;
-            margin: 30px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-        }
+    /* CONTAINER */
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
 
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-        }
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      border-left: 4px solid var(--red-neon);
+      padding-left: 10px;
+      text-shadow: 0 0 5px var(--red-neon);
+    }
 
-        /* --- CARDÁPIO --- */
-        .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #fff;
-            border-left: 4px solid var(--red-neon);
-            padding-left: 10px;
-            text-shadow: 0 0 5px var(--white-glow);
-        }
+    /* GRID DE CARDÁPIO */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
 
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 20px;
-        }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid rgba(255, 102, 0, 0.2);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
 
-        .menu-item {
-            background-color: var(--card-bg);
-            border: 1px solid #333;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px var(--orange-glow);
+      border-color: var(--orange-neon);
+    }
 
-        .menu-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--orange-neon);
-            box-shadow: 0 0 15px var(--orange-glow);
-        }
+    .card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
 
-        .item-img {
-            width: 100%;
-            height: 150px;
-            background-color: #252525;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 0.9rem;
-        }
+    .card-content {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
 
-        .item-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .card-title {
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
 
-        .item-info {
-            padding: 15px;
-        }
+    .card-desc {
+      color: var(--text-gray);
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
 
-        .item-title {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #fff;
-        }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
 
-        .item-desc {
-            font-size: 0.85rem;
-            color: #aaa;
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--orange-neon);
+      text-shadow: 0 0 5px var(--orange-glow);
+    }
 
-        .item-price {
-            font-size: 1.2rem;
-            color: var(--orange-neon);
-            font-weight: bold;
-            text-shadow: 0 0 5px var(--orange-glow);
-            margin-bottom: 12px;
-        }
+    /* CONTROLES DE QUANTIDADE */
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #0b0b0f;
+      padding: 5px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--orange-neon);
+    }
 
-        .btn-add {
-            width: 100%;
-            background: linear-gradient(45deg, var(--orange-neon), var(--red-neon));
-            color: #fff;
-            border: none;
-            padding: 10px;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            text-transform: uppercase;
-            box-shadow: 0 0 8px var(--orange-glow);
-            transition: opacity 0.2s;
-        }
+    .qty-btn {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+    }
 
-        .btn-add:hover {
-            opacity: 0.9;
-        }
+    .qty-btn:hover {
+      color: var(--red-neon);
+    }
 
-        /* --- CARRINHO & CHECKOUT --- */
-        .cart-panel {
-            background-color: var(--card-bg);
-            border: 1px solid var(--orange-neon);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 10px var(--orange-glow);
-            height: fit-content;
-        }
+    /* PAINEL DE PEDIDO FIXO */
+    .cart-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #121218;
+      border-top: 2px solid var(--orange-neon);
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
+    }
 
-        .cart-items {
-            list-style: none;
-            margin-bottom: 15px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
+    .cart-total {
+      font-size: 1.1rem;
+    }
 
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid #333;
-            font-size: 0.9rem;
-        }
+    .cart-total span {
+      color: var(--orange-neon);
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
 
-        .cart-item-title {
-            font-weight: bold;
-        }
+    .btn-checkout {
+      background: linear-gradient(45deg, var(--orange-neon), var(--red-neon));
+      color: var(--white);
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--orange-glow);
+      text-transform: uppercase;
+    }
 
-        .btn-remove {
-            background: transparent;
-            border: none;
-            color: var(--red-neon);
-            cursor: pointer;
-            font-weight: bold;
-            margin-left: 10px;
-        }
+    .btn-checkout:hover {
+      opacity: 0.9;
+    }
 
-        .cart-total {
-            font-size: 1.2rem;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            margin: 15px 0;
-            border-top: 1px solid #444;
-            padding-top: 10px;
-        }
+    /* MODAL DE CHECKOUT */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .cart-total span:last-child {
-            color: var(--orange-neon);
-            text-shadow: 0 0 5px var(--orange-glow);
-        }
+    .modal-content {
+      background: var(--card-bg);
+      border: 2px solid var(--orange-neon);
+      padding: 25px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 450px;
+      box-shadow: 0 0 20px var(--orange-glow);
+    }
 
-        /* OPÇÕES DE CHECKOUT */
-        .form-group {
-            margin-bottom: 15px;
-        }
+    .modal h2 {
+      margin-bottom: 15px;
+      color: var(--orange-neon);
+    }
 
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            margin-bottom: 5px;
-            color: #ccc;
-        }
+    .form-group {
+      margin-bottom: 15px;
+    }
 
-        .form-group select, .form-group input {
-            width: 100%;
-            padding: 10px;
-            background-color: #0d0d0d;
-            border: 1px solid #444;
-            color: #fff;
-            border-radius: 5px;
-        }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+    }
 
-        .form-group select:focus, .form-group input:focus {
-            border-color: var(--orange-neon);
-            outline: none;
-            box-shadow: 0 0 5px var(--orange-glow);
-        }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #333;
+      background: #0b0b0f;
+      color: #fff;
+    }
 
-        .btn-submit {
-            width: 100%;
-            background-color: transparent;
-            color: #fff;
-            border: 2px solid var(--orange-neon);
-            padding: 12px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            text-transform: uppercase;
-            box-shadow: 0 0 10px var(--orange-glow);
-            transition: 0.3s;
-        }
+    .pix-box {
+      background: #0b0b0f;
+      border: 1px dashed var(--orange-neon);
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
 
-        .btn-submit:hover {
-            background-color: var(--orange-neon);
-            color: #000;
-        }
+    .pix-key {
+      color: var(--red-neon);
+      font-weight: bold;
+      font-size: 0.9rem;
+      margin-top: 5px;
+      word-break: break-all;
+    }
 
-        /* MODAL PIX */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background-color: var(--card-bg);
-            border: 2px solid var(--orange-neon);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            max-width: 400px;
-            box-shadow: 0 0 20px var(--orange-glow);
-        }
-
-        .pix-code {
-            background-color: #000;
-            padding: 10px;
-            border: 1px dashed var(--orange-neon);
-            color: #fff;
-            word-break: break-all;
-            margin: 15px 0;
-            font-size: 0.85rem;
-        }
-
-        .btn-close {
-            background: var(--red-neon);
-            color: #fff;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-    </style>
+    .btn-close {
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- CABEÇALHO DA MARMITARIA -->
-    <header>
-        <div class="logo-placeholder">
-            <!-- Substitua o src pelo caminho do seu arquivo de logo -->
-            <img src="https://via.placeholder.com/120/000000/ff6600?text=SUA+LOGO" alt="Logo Marmitaria">
-        </div>
-        <h1>Marmitaria Neon</h1>
-        <p>Sabor Caseiro com Estilo • Pedidos Rápidos</p>
-    </header>
-
-    <div class="container">
-        <!-- SEÇÃO DE CARDÁPIO -->
-        <main>
-            <h2 class="section-title">Escolha suas Marmitas</h2>
-            <div class="menu-grid">
-                
-                <!-- Item 1 -->
-                <div class="menu-item">
-                    <div class="item-img">
-                        <!-- Substitua o src pela foto da marmita -->
-                        <img src="https://via.placeholder.com/300x150/181818/ff6600?text=Marmita+Tradicional" alt="Marmita Tradicional">
-                    </div>
-                    <div class="item-info">
-                        <div class="item-title">Tradicional da Casa</div>
-                        <div class="item-desc">Arroz branco, feijão carioquinha, bife acebolado e farofa artesanal.</div>
-                        <div class="item-price">R$ 22,00</div>
-                        <button class="btn-add" onclick="addToCart('Tradicional da Casa', 22.00)">Adicionar</button>
-                    </div>
-                </div>
-
-                <!-- Item 2 -->
-                <div class="menu-item">
-                    <div class="item-img">
-                        <img src="https://via.placeholder.com/300x150/181818/ff6600?text=Marmita+Fit" alt="Marmita Fit">
-                    </div>
-                    <div class="item-info">
-                        <div class="item-title">Fit Frango com Batata Doce</div>
-                        <div class="item-desc">Peito de frango grelhado, purê de batata doce e mix de legumes no vapor.</div>
-                        <div class="item-price">R$ 25,00</div>
-                        <button class="btn-add" onclick="addToCart('Fit Frango com Batata Doce', 25.00)">Adicionar</button>
-                    </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="menu-item">
-                    <div class="item-img">
-                        <img src="https://via.placeholder.com/300x150/181818/ff6600?text=Marmita+Executiva" alt="Marmita Executiva">
-                    </div>
-                    <div class="item-info">
-                        <div class="item-title">Executiva de Strogonoff</div>
-                        <div class="item-desc">Strogonoff de carne, arroz soltinho e batata palha crocante.</div>
-                        <div class="item-price">R$ 26,50</div>
-                        <button class="btn-add" onclick="addToCart('Executiva Strogonoff', 26.50)">Adicionar</button>
-                    </div>
-                </div>
-
-                <!-- Item 4 -->
-                <div class="menu-item">
-                    <div class="item-img">
-                        <img src="https://via.placeholder.com/300x150/181818/ff6600?text=Feijoada" alt="Feijoada Especial">
-                    </div>
-                    <div class="item-info">
-                        <div class="item-title">Feijoada Especial</div>
-                        <div class="item-desc">Feijoada completa, couve refogada, torresmo, arroz e laranja.</div>
-                        <div class="item-price">R$ 28,00</div>
-                        <button class="btn-add" onclick="addToCart('Feijoada Especial', 28.00)">Adicionar</button>
-                    </div>
-                </div>
-
-            </div>
-        </main>
-
-        <!-- SEÇÃO DO CARRINHO E CHECKOUT -->
-        <aside>
-            <div class="cart-panel">
-                <h2 class="section-title" style="font-size: 1.2rem;">Seu Pedido</h2>
-                <ul class="cart-items" id="cart-items">
-                    <!-- Itens adicionados aparecem aqui -->
-                </ul>
-
-                <div class="cart-total">
-                    <span>Total:</span>
-                    <span id="total-price">R$ 0,00</span>
-                </div>
-
-                <div class="form-group">
-                    <label for="customer-name">Seu Nome:</label>
-                    <input type="text" id="customer-name" placeholder="Digite seu nome">
-                </div>
-
-                <div class="form-group">
-                    <label for="delivery-type">Forma de Entrega:</label>
-                    <select id="delivery-type">
-                        <option value="Retirada na Loja">Retirada na Loja</option>
-                        <option value="Entrega">Entrega (A combinar)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="payment-method">Forma de Pagamento:</label>
-                    <select id="payment-method">
-                        <option value="PIX">PIX (Chave Instantânea)</option>
-                        <option value="Cartão/Dinheiro na Retirada">Pagar na Retirada/Entrega</option>
-                    </select>
-                </div>
-
-                <button class="btn-submit" onclick="processOrder()">Finalizar Pedido</button>
-            </div>
-        </aside>
+  <!-- HEADER / LOGO -->
+  <header>
+    <div class="logo-container">
+      <!-- Substitua a URL abaixo pela imagem do seu logo -->
+      <img src="https://via.placeholder.com/60/ff6600/ffffff?text=LOGO" alt="Logo Marmitaria" class="logo-img">
+      <h1>Marmitaria Neon</h1>
     </div>
+    <p>Comida caseira com sabor inigualável • Retirada no Local</p>
+  </header>
 
-    <!-- MODAL DE PAGAMENTO PIX -->
-    <div class="modal" id="pix-modal">
-        <div class="modal-content">
-            <h3 style="color: var(--orange-neon); margin-bottom: 10px;">Pagamento via PIX</h3>
-            <p>Escaneie ou copie a chave abaixo para realizar o pagamento:</p>
-            <div class="pix-code">sua-chave-pix-aqui@marmitaria.com</div>
-            <p style="font-size: 0.8rem; color: #aaa; margin-bottom: 15px;">Envie o comprovante ao retirar seu pedido.</p>
-            <button class="btn-close" onclick="closeModal()">Fechar e Confirmar</button>
+  <div class="container">
+    <h2 class="section-title">Escolha suas Marmitas</h2>
+
+    <!-- CARDÁPIO -->
+    <div class="menu-grid" id="menu">
+      <!-- Item 1 -->
+      <div class="card" data-id="1" data-name="Marmita Tradicional" data-price="18.00">
+        <!-- Substitua a URL abaixo pela imagem da marmita -->
+        <img src="https://via.placeholder.com/300x180/16161e/ff6600?text=Tradicional" alt="Marmita Tradicional" class="card-img">
+        <div class="card-content">
+          <h3 class="card-title">Marmita Tradicional</h3>
+          <p class="card-desc">Arroz branco, feijão carioquinha, bife acebolado e farofa da casa.</p>
+          <div class="card-footer">
+            <span class="price">R$ 18,00</span>
+            <div class="qty-controls">
+              <button class="qty-btn" onclick="updateQty(1, -1)">-</button>
+              <span id="qty-1">0</span>
+              <button class="qty-btn" onclick="updateQty(1, 1)">+</button>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="card" data-id="2" data-name="Marmita Fitness" data-price="22.00">
+        <img src="https://via.placeholder.com/300x180/16161e/ff6600?text=Fitness" alt="Marmita Fitness" class="card-img">
+        <div class="card-content">
+          <h3 class="card-title">Marmita Fitness</h3>
+          <p class="card-desc">Arroz integral, frango grelhado em tiras, brócolis e batata doce.</p>
+          <div class="card-footer">
+            <span class="price">R$ 22,00</span>
+            <div class="qty-controls">
+              <button class="qty-btn" onclick="updateQty(2, -1)">-</button>
+              <span id="qty-2">0</span>
+              <button class="qty-btn" onclick="updateQty(2, 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="card" data-id="3" data-name="Marmita Especial Feijoada" data-price="25.00">
+        <img src="https://via.placeholder.com/300x180/16161e/ff6600?text=Feijoada" alt="Marmita Feijoada" class="card-img">
+        <div class="card-content">
+          <h3 class="card-title">Marmita Feijoada</h3>
+          <p class="card-desc">Feijoada completa, arroz, couve refogada, farofa e torresmo crocante.</p>
+          <div class="card-footer">
+            <span class="price">R$ 25,00</span>
+            <div class="qty-controls">
+              <button class="qty-btn" onclick="updateQty(3, -1)">-</button>
+              <span id="qty-3">0</span>
+              <button class="qty-btn" onclick="updateQty(3, 1)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- LOGICA JAVASCRIPT -->
-    <script>
-        let cart = [];
+  <!-- BARRA DE PEDIDO FIXA -->
+  <div class="cart-bar">
+    <div class="cart-total">Total: <span id="total-price">R$ 0,00</span></div>
+    <button class="btn-checkout" onclick="openModal()">Finalizar Pedido</button>
+  </div>
 
-        function addToCart(title, price) {
-            cart.push({ title, price });
-            updateCartUI();
-        }
+  <!-- MODAL DE PAGAMENTO E RETIRADA -->
+  <div class="modal" id="checkout-modal">
+    <div class="modal-content">
+      <h2>Finalizar e Retirar</h2>
+      
+      <div class="form-group">
+        <label>Seu Nome:</label>
+        <input type="text" id="client-name" placeholder="Digite seu nome completo">
+      </div>
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
+      <div class="form-group">
+        <label>Forma de Retirada:</label>
+        <input type="text" value="Retirada na Loja (Balcão)" disabled>
+      </div>
 
-        function updateCartUI() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            const totalPriceElement = document.getElementById('total-price');
-            cartItemsContainer.innerHTML = '';
-            
-            let total = 0;
+      <div class="pix-box">
+        <p><strong>Pagamento via PIX</strong></p>
+        <p style="font-size: 0.8rem; color: var(--text-gray);">Faça o PIX no valor total e apresente o comprovante na retirada.</p>
+        <p class="pix-key">Chave PIX (CNPJ/E-mail):<br>sua-chave-pix-aqui@marmitaria.com</p>
+      </div>
 
-            cart.forEach((item, index) => {
-                total += item.price;
-                const li = document.createElement('li');
-                li.className = 'cart-item';
-                li.innerHTML = `
-                    <span><strong class="cart-item-title">${item.title}</strong><br>R$ ${item.price.toFixed(2).replace('.', ',')}</span>
-                    <button class="btn-remove" onclick="removeFromCart(${index})">X</button>
-                `;
-                cartItemsContainer.appendChild(li);
-            });
+      <button class="btn-checkout" style="width: 100%; margin-top: 15px;" onclick="sendOrder()">Confirmar e Enviar Pedido</button>
+      <button class="btn-close" onclick="closeModal()">Cancelar</button>
+    </div>
+  </div>
 
-            totalPriceElement.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
-        }
+  <script>
+    const items = {
+      1: { name: "Marmita Tradicional", price: 18.00, qty: 0 },
+      2: { name: "Marmita Fitness", price: 22.00, qty: 0 },
+      3: { name: "Marmita Especial Feijoada", price: 25.00, qty: 0 }
+    };
 
-        function processOrder() {
-            const name = document.getElementById('customer-name').value;
-            const payment = document.getElementById('payment-method').value;
+    function updateQty(id, change) {
+      if (items[id].qty + change >= 0) {
+        items[id].qty += change;
+        document.getElementById(`qty-${id}`).innerText = items[id].qty;
+        calculateTotal();
+      }
+    }
 
-            if (cart.length === 0) {
-                alert('Seu carrinho está vazio!');
-                return;
-            }
+    function calculateTotal() {
+      let total = 0;
+      for (let id in items) {
+        total += items[id].qty * items[id].price;
+      }
+      document.getElementById('total-price').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+      return total;
+    }
 
-            if (!name) {
-                alert('Por favor, informe seu nome.');
-                return;
-            }
+    function openModal() {
+      if (calculateTotal() === 0) {
+        alert("Selecione pelo menos uma marmita antes de finalizar!");
+        return;
+      }
+      document.getElementById('checkout-modal').style.display = 'flex';
+    }
 
-            if (payment === 'PIX') {
-                document.getElementById('pix-modal').style.display = 'flex';
-            } else {
-                alert(`Obrigado pelo pedido, ${name}! Seu pedido foi recebido com sucesso.`);
-                cart = [];
-                updateCartUI();
-            }
-        }
+    function closeModal() {
+      document.getElementById('checkout-modal').style.display = 'none';
+    }
 
-        function closeModal() {
-            document.getElementById('pix-modal').style.display = 'none';
-            alert('Pedido confirmado! Aguardamos você para a retirada.');
-            cart = [];
-            updateCartUI();
-        }
-    </script>
+    function sendOrder() {
+      const name = document.getElementById('client-name').value;
+      if (!name) {
+        alert("Por favor, informe seu nome.");
+        return;
+      }
+
+      alert(`Obrigado, ${name}! Seu pedido foi registrado para RETIRADA NA LOJA. Faça o PIX e mostre o comprovante ao retirar.`);
+      closeModal();
+    }
+  </script>
 </body>
 </html>
