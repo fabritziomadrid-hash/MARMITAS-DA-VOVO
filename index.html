@@ -529,7 +529,7 @@
   <!-- CONTEÚDO PRINCIPAL -->
   <div class="container">
 
-    <!-- MENU COMBOS -->
+    <!-- MENU COMBOS (ATUALIZADO CONFORME A IMAGEM) -->
     <div class="category-section">
       <div class="category-header">
         <span class="category-icon">🔥</span>
@@ -537,45 +537,91 @@
       </div>
 
       <div class="menu-grid">
+        
+        <!-- COMBO 1 -->
         <div class="card top-item">
-          <span class="badge-top">COMBO INDIVIDUAL</span>
+          <span class="badge-top">COMBO</span>
           <div class="card-img-container">
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Combo Individual" class="card-img">
+            <img src="https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?auto=format&fit=crop&w=600&q=80" alt="2 Parmegianas de Frango M" class="card-img">
           </div>
           <div class="card-body">
-            <h3 class="card-title">Combo 1: Marmita + Coca 300ml</h3>
-            <p class="card-desc">1 Marmita M de Frango Grelhado + 1 Coca Lata 300ml.</p>
+            <h3 class="card-title">2 Parmegianas de Frango M</h3>
+            <p class="card-desc">2 Marmitas de frango a parmegiana tamanho médio.</p>
             
-            <div class="size-selector" data-item="combo-1">
-              <button class="size-btn active" onclick="selectSize(this, 'Único', 20.90)">Único<strong>R$ 20,90</strong></button>
+            <div class="size-selector" data-item="combo-parmegiana">
+              <button class="size-btn active" onclick="selectSize(this, 'Único', 33.90)">Único<strong>R$ 33,90</strong></button>
             </div>
 
             <div class="card-footer">
-              <span class="selected-price" id="price-combo-1">R$ 20,90</span>
-              <button class="btn-add" onclick="addToCart('Combo 1: Marmita + Coca', 'combo-1', 'marmita')">+ Add</button>
+              <span class="selected-price" id="price-combo-parmegiana">R$ 33,90</span>
+              <button class="btn-add" onclick="addToCart('2 Parmegianas de Frango M', 'combo-parmegiana', 'marmita')">+ Add</button>
             </div>
           </div>
         </div>
 
+        <!-- COMBO 2 -->
         <div class="card top-item">
-          <span class="badge-top">COMBO DUPLO</span>
+          <span class="badge-top">COMBO</span>
           <div class="card-img-container">
-            <img src="https://images.unsplash.com/photo-1560781290-7dc94c0f8f4f?auto=format&fit=crop&w=600&q=80" alt="Combo Duplo" class="card-img">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="2 Bife Grelhado + Coca 600ml" class="card-img">
           </div>
           <div class="card-body">
-            <h3 class="card-title">Combo 2: Casal Perfeito</h3>
-            <p class="card-desc">2 Marmitas M (Parmegiana Carne) + 1 Coca 600ml.</p>
+            <h3 class="card-title">2 Bife Grelhado + Coca 600ml</h3>
+            <p class="card-desc">2 Marmitas de bife grelhado + 1 Coca-Cola 600ml.</p>
             
-            <div class="size-selector" data-item="combo-2">
-              <button class="size-btn active" onclick="selectSize(this, 'Único', 49.90)">Único<strong>R$ 49,90</strong></button>
+            <div class="size-selector" data-item="combo-bife-grelhado">
+              <button class="size-btn active" onclick="selectSize(this, 'Único', 38.90)">Único<strong>R$ 38,90</strong></button>
             </div>
 
             <div class="card-footer">
-              <span class="selected-price" id="price-combo-2">R$ 49,90</span>
-              <button class="btn-add" onclick="addToCart('Combo 2: Casal Perfeito', 'combo-2', 'marmita')">+ Add</button>
+              <span class="selected-price" id="price-combo-bife-grelhado">R$ 38,90</span>
+              <button class="btn-add" onclick="addToCart('2 Bife Grelhado + Coca 600ml', 'combo-bife-grelhado', 'marmita')">+ Add</button>
             </div>
           </div>
         </div>
+
+        <!-- COMBO 3 -->
+        <div class="card top-item">
+          <span class="badge-top">COMBO</span>
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=600&q=80" alt="2 Frango Grelhado + Coca 600ml" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">2 Frango Grelhado + Coca 600ml</h3>
+            <p class="card-desc">2 Marmitas de frango grelhado + 1 Coca-Cola 600ml.</p>
+            
+            <div class="size-selector" data-item="combo-frango-grelhado">
+              <button class="size-btn active" onclick="selectSize(this, 'Único', 34.90)">Único<strong>R$ 34,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-combo-frango-grelhado">R$ 34,90</span>
+              <button class="btn-add" onclick="addToCart('2 Frango Grelhado + Coca 600ml', 'combo-frango-grelhado', 'marmita')">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- COMBO 4 -->
+        <div class="card top-item">
+          <span class="badge-top">COMBO</span>
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80" alt="2 Frango a Milanesa + Coca 600ml" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">2 Frango a Milanesa + Coca 600ml</h3>
+            <p class="card-desc">2 Marmitas de frango a milanesa + 1 Coca-Cola 600ml.</p>
+            
+            <div class="size-selector" data-item="combo-frango-milanesa">
+              <button class="size-btn active" onclick="selectSize(this, 'Único', 36.90)">Único<strong>R$ 36,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-combo-frango-milanesa">R$ 36,90</span>
+              <button class="btn-add" onclick="addToCart('2 Frango a Milanesa + Coca 600ml', 'combo-frango-milanesa', 'marmita')">+ Add</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -930,6 +976,26 @@
             </div>
           </div>
         </div>
+
+        <div class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80" alt="Coca Cola 600ml" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Coca-Cola Normal (600ml)</h3>
+            <p class="card-desc">Garrafa gelada 600ml.</p>
+            
+            <div class="size-selector" data-item="coca-600">
+              <button class="size-btn active" onclick="selectSize(this, '600ml', 8.00)">600ml<strong>R$ 8,00</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-coca-600">R$ 8,00</span>
+              <button class="btn-add" onclick="addToCart('Coca-Cola Normal 600ml', 'coca-600', 'bebida')">+ Add</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -939,9 +1005,9 @@
   <div class="cart-bar">
     <div>
       <div class="cart-count" id="cart-count">0 itens no carrinho</div>
-      <div class="cart-total">Total: <span id="cart-total">R$ 0,00</span></div>
+      <div class="cart-total">Total: <span id="cart-total-price">R$ 0,00</span></div>
     </div>
-    <button class="btn-checkout" onclick="openModal()">Finalizar Pedido</button>
+    <button class="btn-checkout" onclick="openModal()">Ver Pedido 🛒</button>
   </div>
 
   <!-- MODAL DE CHECKOUT -->
@@ -949,45 +1015,48 @@
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title">Finalizar Pedido</h3>
-        <button class="close-btn" onclick="closeModal()">×</button>
+        <button class="close-btn" onclick="closeModal()">&times;</button>
       </div>
 
-      <div class="cart-summary" id="cart-items">
-        <!-- ITENS DO CARRINHO FICAM AQUI DENTRO -->
+      <div class="cart-summary" id="cart-summary-list">
+        <!-- Itens do carrinho aparecem aqui -->
       </div>
 
-      <form id="order-form" onsubmit="submitOrder(event)">
+      <form id="checkout-form" onsubmit="sendWhatsApp(event)">
         <div class="form-group">
-          <label for="nome">Nome Completo:</label>
-          <input type="text" id="nome" required placeholder="Digite seu nome">
+          <label for="client-name">Seu Nome *</label>
+          <input type="text" id="client-name" required placeholder="Ex: João Silva">
         </div>
 
         <div class="form-group">
-          <label for="tipo-entrega">Tipo de Pedido:</label>
-          <select id="tipo-entrega" onchange="toggleEntrega(this.value)">
-            <option value="entrega">Entrega em Domíclio</option>
-            <option value="retirada">Retirada na Loja</option>
+          <label for="delivery-type">Forma de Entrega *</label>
+          <select id="delivery-type" onchange="toggleAddressField()" required>
+            <option value="entrega">Entrega (Delivery)</option>
+            <option value="retirada">Retirar no Balcão</option>
           </select>
         </div>
 
-        <div class="form-group" id="group-endereco">
-          <label for="endereco">Endereço de Entrega:</label>
-          <input type="text" id="endereco" placeholder="Rua, Número, Bairro, Ponto de Ref.">
+        <div class="form-group" id="address-group">
+          <label for="client-address">Endereço Completo *</label>
+          <input type="text" id="client-address" required placeholder="Rua, Número, Bairro, Ponto de Referência">
         </div>
 
         <div class="form-group">
-          <label for="pagamento">Forma de Pagamento:</label>
-          <select id="pagamento">
-            <!-- As opções são geradas dinamicamente via JS -->
+          <label for="payment-method">Forma de Pagamento *</label>
+          <select id="payment-method" onchange="toggleTrocoField()" required>
+            <option value="Pix">Pix</option>
+            <option value="Cartão de Débito">Cartão de Débito</option>
+            <option value="Cartão de Crédito">Cartão de Crédito</option>
+            <option value="Dinheiro">Dinheiro</option>
           </select>
         </div>
 
-        <div class="form-group">
-          <label for="observacoes">Observações do Pedido:</label>
-          <input type="text" id="observacoes" placeholder="Ex: Sem cebola, trocar arroz por batata...">
+        <div class="form-group" id="troco-group" style="display: none;">
+          <label for="client-troco">Troco para quanto?</label>
+          <input type="text" id="client-troco" placeholder="Ex: Troco para R$ 50,00">
         </div>
 
-        <button type="submit" class="btn-submit">Enviar Pedido no WhatsApp</button>
+        <button type="submit" class="btn-submit">Enviar Pedido no WhatsApp 🚀</button>
       </form>
     </div>
   </div>
@@ -996,139 +1065,146 @@
   <footer>
     <div class="footer-content">
       <p><strong>Cantinho da Vovó Marmitas</strong></p>
-      <p>O melhor sabor caseiro da região • Entrega Rápida</p>
+      <p>Entregas de Segunda a Sábado das 11:00 às 14:30</p>
       <p>© 2026 Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <!-- JAVASCRIPT -->
+  <!-- JAVASCRIPT LOGIC -->
   <script>
+    const selectedSizes = {};
     let cart = [];
-    let selectedSizes = {};
 
-    function selectSize(button, size, price) {
-      const container = button.closest('.size-selector');
-      const itemId = container.getAttribute('data-item');
+    // Seleção de tamanho no card
+    function selectSize(btn, sizeName, price) {
+      const parent = btn.parentElement;
+      const itemId = parent.getAttribute('data-item');
+      
+      const buttons = parent.querySelectorAll('.size-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+      
+      btn.classList.add('active');
+      
+      selectedSizes[itemId] = {
+        size: sizeName,
+        price: price
+      };
 
-      container.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-
-      selectedSizes[itemId] = { size: size, price: price };
-      document.getElementById(`price-${itemId}`).innerText = `R$ ${price.toFixed(2).replace('.', ',')}`;
+      const priceDisplay = document.getElementById(`price-${itemId}`);
+      if (priceDisplay) {
+        priceDisplay.innerText = `R$ ${price.toFixed(2).replace('.', ',')}`;
+      }
     }
 
-    function addToCart(name, itemId, category) {
+    // Adicionar item ao carrinho
+    function addToCart(title, itemId, type) {
       let sizeInfo = selectedSizes[itemId];
       
       if (!sizeInfo) {
         const defaultBtn = document.querySelector(`[data-item="${itemId}"] .size-btn.active`);
         if (defaultBtn) {
-          const sizeText = defaultBtn.innerText.split('R$')[0].trim();
-          const priceText = defaultBtn.querySelector('strong').innerText.replace('R$', '').replace(',', '.').trim();
-          sizeInfo = { size: sizeText, price: parseFloat(priceText) };
-        } else {
-          sizeInfo = { size: 'Padrão', price: 0 };
+          const onclickText = defaultBtn.getAttribute('onclick');
+          const matches = onclickText.match(/'([^']+)',\s*([0-9.]+)/);
+          if (matches) {
+            sizeInfo = {
+              size: matches[1],
+              price: parseFloat(matches[2])
+            };
+          }
         }
       }
 
+      if (!sizeInfo) return;
+
       cart.push({
-        name: name,
+        title: title,
         size: sizeInfo.size,
-        price: sizeInfo.price
+        price: sizeInfo.price,
+        type: type
       });
 
-      updateCart();
+      updateCartUI();
+    }
+
+    // Atualizar UI do carrinho
+    function updateCartUI() {
+      const cartCount = document.getElementById('cart-count');
+      const cartTotalPrice = document.getElementById('cart-total-price');
+      const cartSummaryList = document.getElementById('cart-summary-list');
+
+      cartCount.innerText = `${cart.length} ${cart.length === 1 ? 'item' : 'itens'} no carrinho`;
+
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      cartTotalPrice.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+
+      cartSummaryList.innerHTML = '';
+      if (cart.length === 0) {
+        cartSummaryList.innerHTML = '<p style="font-size: 0.8rem; color: #a0a0b5; text-align: center;">Seu carrinho está vazio.</p>';
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const row = document.createElement('div');
+        row.className = 'cart-item-row';
+        row.innerHTML = `
+          <span>${item.title} (${item.size})</span>
+          <span>R$ ${item.price.toFixed(2).replace('.', ',')} <span class="remove-item" onclick="removeFromCart(${index})">✖</span></span>
+        `;
+        cartSummaryList.appendChild(row);
+      });
     }
 
     function removeFromCart(index) {
       cart.splice(index, 1);
-      updateCart();
+      updateCartUI();
     }
 
-    function updateCart() {
-      const countEl = document.getElementById('cart-count');
-      const totalEl = document.getElementById('cart-total');
-      const itemsEl = document.getElementById('cart-items');
-
-      countEl.innerText = `${cart.length} itens no carrinho`;
-
-      let total = cart.reduce((sum, item) => sum + item.price, 0);
-      totalEl.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
-
-      itemsEl.innerHTML = '';
-      if (cart.length === 0) {
-        itemsEl.innerHTML = '<p style="text-align:center; color: var(--gray-text); font-size: 0.8rem;">Seu carrinho está vazio</p>';
-      } else {
-        cart.forEach((item, index) => {
-          itemsEl.innerHTML += `
-            <div class="cart-item-row">
-              <span>${item.name} (${item.size})</span>
-              <span>R$ ${item.price.toFixed(2).replace('.', ',')} <span class="remove-item" onclick="removeFromCart(${index})">✕</span></span>
-            </div>
-          `;
-        });
-      }
-    }
-
+    // Abrir e fechar Modal
     function openModal() {
       if (cart.length === 0) {
-        alert('Adicione pelo menos um item ao seu carrinho!');
+        alert("Adicione pelo menos um item ao carrinho!");
         return;
       }
+
+      const hasMarmita = cart.some(item => item.type === 'marmita');
+      if (!hasMarmita) {
+        alert("Não é possível realizar um pedido apenas com bebidas. Por favor, adicione ao menos uma marmita ou combo ao seu carrinho!");
+        return;
+      }
+
       document.getElementById('checkout-modal').style.display = 'flex';
-      
-      // Inicializa o tipo de entrega e as opções de pagamento ao abrir
-      const tipoEntrega = document.getElementById('tipo-entrega').value;
-      toggleEntrega(tipoEntrega);
     }
 
     function closeModal() {
       document.getElementById('checkout-modal').style.display = 'none';
     }
 
-    function toggleEntrega(tipo) {
-      const groupEndereco = document.getElementById('group-endereco');
-      const inputEndereco = document.getElementById('endereco');
+    function toggleAddressField() {
+      const type = document.getElementById('delivery-type').value;
+      const addressGroup = document.getElementById('address-group');
+      const addressInput = document.getElementById('client-address');
 
-      if (tipo === 'retirada') {
-        groupEndereco.style.display = 'none';
-        inputEndereco.removeAttribute('required');
+      if (type === 'retirada') {
+        addressGroup.style.display = 'none';
+        addressInput.removeAttribute('required');
       } else {
-        groupEndereco.style.display = 'block';
-        inputEndereco.setAttribute('required', 'true');
-      }
-
-      // Atualiza as opções de pagamento dinamicamente com base na opção selecionada
-      updatePaymentOptions(tipo);
-    }
-
-    function updatePaymentOptions(tipo) {
-      const pagamentoSelect = document.getElementById('pagamento');
-      pagamentoSelect.innerHTML = '';
-
-      if (tipo === 'entrega') {
-        // Para Entrega: Apenas PIX
-        const optPix = document.createElement('option');
-        optPix.value = 'PIX';
-        optPix.textContent = 'PIX';
-        pagamentoSelect.appendChild(optPix);
-      } else {
-        // Para Retirada na Loja: PIX, Débito e Dinheiro
-        const options = [
-          { value: 'PIX', text: 'PIX' },
-          { value: 'Cartão de Débito', text: 'Cartão de Débito' },
-          { value: 'Dinheiro', text: 'Dinheiro' }
-        ];
-
-        options.forEach(opt => {
-          const el = document.createElement('option');
-          el.value = opt.value;
-          el.textContent = opt.text;
-          pagamentoSelect.appendChild(el);
-        });
+        addressGroup.style.display = 'block';
+        addressInput.setAttribute('required', 'true');
       }
     }
 
+    function toggleTrocoField() {
+      const payment = document.getElementById('payment-method').value;
+      const trocoGroup = document.getElementById('troco-group');
+
+      if (payment === 'Dinheiro') {
+        trocoGroup.style.display = 'block';
+      } else {
+        trocoGroup.style.display = 'none';
+      }
+    }
+
+    // Filtro de busca na página
     function filterItems() {
       const input = document.getElementById('search-bar').value.toLowerCase();
       const cards = document.querySelectorAll('.card');
@@ -1145,40 +1221,45 @@
       });
     }
 
-    function submitOrder(e) {
-      e.preventDefault();
+    // Enviar mensagem para o WhatsApp
+    function sendWhatsApp(event) {
+      event.preventDefault();
 
-      const nome = document.getElementById('nome').value;
-      const tipoEntrega = document.getElementById('tipo-entrega').value;
-      const endereco = document.getElementById('endereco').value;
-      const pagamento = document.getElementById('pagamento').value;
-      const obs = document.getElementById('observacoes').value;
+      const name = document.getElementById('client-name').value;
+      const deliveryType = document.getElementById('delivery-type').value;
+      const address = document.getElementById('client-address').value;
+      const payment = document.getElementById('payment-method').value;
+      const troco = document.getElementById('client-troco').value;
 
-      let total = cart.reduce((sum, item) => sum + item.price, 0);
+      let itemsText = "";
+      let total = 0;
 
-      let msg = `*--- PEDIDO CANTINHO DA VOVÓ ---*\n\n`;
-      msg += `*Cliente:* ${nome}\n`;
-      msg += `*Tipo de Pedido:* ${tipoEntrega === 'entrega' ? 'Entrega em Domicílio' : 'Retirada na Loja'}\n`;
-      if (tipoEntrega === 'entrega') {
-        msg += `*Endereço:* ${endereco}\n`;
-      }
-      msg += `*Forma de Pagamento:* ${pagamento}\n\n`;
-      msg += `*ITENS DO PEDIDO:*\n`;
-
-      cart.forEach(item => {
-        msg += `• ${item.name} (${item.size}) - R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
+      cart.forEach((item, index) => {
+        itemsText += `${index + 1}. *${item.title}* (${item.size}) - R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
+        total += item.price;
       });
 
-      msg += `\n*TOTAL:* R$ ${total.toFixed(2).replace('.', ',')}\n`;
-
-      if (obs) {
-        msg += `*Observações:* ${obs}\n`;
+      let message = `*NOVO PEDIDO - CANTINHO DA VOVÓ*\n\n`;
+      message += `👤 *Cliente:* ${name}\n`;
+      message += `------------------------------------\n`;
+      message += `📋 *ITENS DO PEDIDO:*\n${itemsText}\n`;
+      message += `------------------------------------\n`;
+      message += `💰 *Total:* R$ ${total.toFixed(2).replace('.', ',')}\n\n`;
+      message += `🛵 *Forma de Entrega:* ${deliveryType === 'entrega' ? 'Entrega' : 'Retirada no Balcão'}\n`;
+      
+      if (deliveryType === 'entrega') {
+        message += `📍 *Endereço:* ${address}\n`;
+      }
+      
+      message += `💳 *Forma de Pagamento:* ${payment}\n`;
+      if (payment === 'Dinheiro' && troco) {
+        message += `💵 *Troco:* ${troco}\n`;
       }
 
-      const telefoneWhatsApp = '5500000000000'; // Substitua pelo seu número do WhatsApp com DDD
-      const url = `https://api.whatsapp.com/send?phone=${telefoneWhatsApp}&text=${encodeURIComponent(msg)}`;
-
-      window.open(url, '_blank');
+      const phoneNumber = "5500000000000"; // INSIRA O NÚMERO DO WHATSAPP AQUI COM DDD
+      const encodedMessage = encodeURIComponent(message);
+      
+      window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
     }
   </script>
 </body>
