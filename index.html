@@ -839,11 +839,14 @@
         <span id="copy-msg" style="display:none; font-size:0.75rem; color: var(--orange-neon); margin-top:4px;">Chave copiada!</span>
       </div>
 
-      <button class="btn-checkout" style="width: 100%; margin-top: 10px;" onclick="confirmOrder()">Confirmar Pedido</button>
+      <button class="btn-checkout" style="width: 100%; margin-top: 10px;" onclick="confirmOrder()">Confirmar Pedido no WhatsApp</button>
     </div>
   </div>
 
   <script>
+    // ALTERE AQUI PARA O SEU NÚMERO DE WHATSAPP (55 + DDD + Número)
+    const PHONE_NUMBER = "5511999999999";
+
     const selectedState = {};
     let cart = [];
 
@@ -938,8 +941,30 @@
       }
 
       const total = cart.reduce((sum, item) => sum + item.price, 0);
-      alert(`Obrigado pelo pedido, ${name}!\n\nSeu pedido totalizou R$ ${total.toFixed(2).replace('.', ',')}.\n\nRealize o pagamento via PIX e apresente o comprovante na RETIRADA NA LOJA.`);
-      
+
+      // Monta a comanda formatada para o WhatsApp
+      let message = `*🧾 NOVO PEDIDO - CANTINHO DA VOVÓ*\n`;
+      message += `-----------------------------------\n`;
+      message += `👤 *Cliente:* ${name}\n`;
+      message += `📍 *Retirada:* Balcão (Presencial)\n`;
+      message += `-----------------------------------\n`;
+      message += `*ITENS DO PEDIDO:*\n`;
+
+      cart.forEach((item) => {
+        message += `• 1x ${item.title} (${item.size}) - R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
+      });
+
+      message += `-----------------------------------\n`;
+      message += `💰 *TOTAL:* R$ ${total.toFixed(2).replace('.', ',')}\n`;
+      message += `💳 *Pagamento:* PIX (Chave copiada pelo site)\n`;
+      message += `-----------------------------------\n`;
+      message += `_Aguardando confirmação para preparo._`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/${PHONE_NUMBER}?text=${encodedMessage}`;
+
+      window.open(whatsappUrl, '_blank');
+
       cart = [];
       updateCartBar();
       closeModal();
