@@ -33,12 +33,12 @@
       overflow-x: hidden;
     }
 
-    /* HEADER & LOGO AREA (AJUSTADO PARA COMPACTAÇÃO) */
+    /* HEADER & LOGO AREA */
     header {
       background: linear-gradient(180deg, #181824 0%, #0b0b0f 100%);
       border-bottom: 2px solid var(--orange-neon);
       box-shadow: 0 4px 20px var(--orange-glow);
-      padding: 10px 15px; /* Reduzido de 25px para compactar */
+      padding: 12px 15px;
       text-align: center;
       position: sticky;
       top: 0;
@@ -53,16 +53,16 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 6px; /* Reduzido o espaço entre itens */
+      gap: 6px;
     }
 
     .logo-frame {
       position: relative;
-      width: 70px; /* Reduzido de 90px para 70px */
-      height: 70px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       background: radial-gradient(circle, #ff6600 0%, #15151e 70%);
-      padding: 2px;
+      padding: 3px;
       box-shadow: 0 0 15px var(--orange-neon);
       display: flex;
       align-items: center;
@@ -78,7 +78,7 @@
     }
 
     .brand-title {
-      font-size: 1.5rem; /* Reduzido de 2.2rem */
+      font-size: 1.6rem;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -93,38 +93,38 @@
 
     .brand-subtitle {
       color: var(--gray-text);
-      font-size: 0.75rem; /* Reduzido para economizar espaço */
+      font-size: 0.75rem;
       letter-spacing: 0.5px;
     }
 
-    .header-badges {
-      display: flex;
-      gap: 8px;
-      margin-top: 2px;
-      flex-wrap: wrap;
-      justify-content: center;
+    /* SEARCH BAR */
+    .search-container {
+      max-width: 1100px;
+      margin: 15px auto 5px;
+      padding: 0 10px;
     }
 
-    .badge {
-      background: rgba(255, 102, 0, 0.15);
+    .search-input {
+      width: 100%;
+      padding: 10px 15px;
+      border-radius: 20px;
       border: 1px solid var(--orange-neon);
+      background: #15151e;
       color: var(--white);
-      padding: 2px 8px;
-      border-radius: 15px;
-      font-size: 0.7rem;
-      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 0 10px rgba(255, 102, 0, 0.2);
+      outline: none;
     }
 
-    .badge-red {
-      background: rgba(255, 0, 51, 0.15);
-      border-color: var(--red-neon);
+    .search-input::placeholder {
+      color: var(--gray-text);
     }
 
     /* CONTAINER & CATEGORIES */
     .container {
       max-width: 1100px;
-      margin: 20px auto;
-      padding: 0 15px;
+      margin: 15px auto;
+      padding: 0 10px;
     }
 
     .category-section {
@@ -135,13 +135,13 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       border-bottom: 2px solid rgba(255, 102, 0, 0.2);
       padding-bottom: 8px;
     }
 
     .category-title {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 800;
       text-transform: uppercase;
       color: var(--white);
@@ -153,20 +153,20 @@
     }
 
     .category-icon {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
     }
 
     /* MENU GRID & CARDS */
     .menu-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 15px;
     }
 
     .card {
       background-color: var(--card-bg);
       border: 1px solid rgba(255, 102, 0, 0.3);
-      border-radius: 16px;
+      border-radius: 14px;
       overflow: hidden;
       position: relative;
       transition: all 0.3s ease;
@@ -181,13 +181,13 @@
 
     .badge-top {
       position: absolute;
-      top: 10px;
-      left: 10px;
+      top: 8px;
+      left: 8px;
       background: linear-gradient(135deg, var(--red-neon), var(--orange-neon));
       color: var(--white);
       font-weight: 900;
-      font-size: 0.7rem;
-      padding: 4px 10px;
+      font-size: 0.65rem;
+      padding: 3px 8px;
       border-radius: 20px;
       text-transform: uppercase;
       z-index: 2;
@@ -195,7 +195,7 @@
 
     .card-img-container {
       width: 100%;
-      height: 180px;
+      height: 150px;
       position: relative;
       overflow: hidden;
       background: #0f0f15;
@@ -208,14 +208,14 @@
     }
 
     .card-body {
-      padding: 15px;
+      padding: 10px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
 
     .card-title {
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--white);
       margin-bottom: 4px;
@@ -224,19 +224,19 @@
 
     .card-desc {
       color: var(--gray-text);
-      font-size: 0.85rem;
-      line-height: 1.3;
-      margin-bottom: 15px;
+      font-size: 0.75rem;
+      line-height: 1.2;
+      margin-bottom: 10px;
       flex-grow: 1;
     }
 
     .size-selector {
       display: flex;
-      gap: 6px;
-      margin-bottom: 15px;
+      gap: 4px;
+      margin-bottom: 10px;
       background: #0d0d12;
-      padding: 4px;
-      border-radius: 8px;
+      padding: 3px;
+      border-radius: 6px;
     }
 
     .size-btn {
@@ -244,17 +244,17 @@
       background: transparent;
       border: none;
       color: var(--gray-text);
-      padding: 6px 2px;
-      border-radius: 6px;
+      padding: 4px 1px;
+      border-radius: 4px;
       cursor: pointer;
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       font-weight: 700;
       text-align: center;
     }
 
     .size-btn strong {
       display: block;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: var(--white);
     }
 
@@ -268,11 +268,11 @@
       align-items: center;
       justify-content: space-between;
       border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 10px;
+      padding-top: 8px;
     }
 
     .selected-price {
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 800;
       color: var(--orange-neon);
     }
@@ -281,11 +281,11 @@
       background: linear-gradient(135deg, var(--orange-neon), var(--red-neon));
       color: var(--white);
       border: none;
-      padding: 8px 14px;
-      border-radius: 16px;
+      padding: 6px 10px;
+      border-radius: 12px;
       font-weight: 700;
       cursor: pointer;
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
     }
 
@@ -297,7 +297,7 @@
       width: 100%;
       background: rgba(18, 18, 26, 0.95);
       border-top: 2px solid var(--orange-neon);
-      padding: 12px 20px;
+      padding: 12px 15px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -324,7 +324,7 @@
       background: linear-gradient(135deg, var(--orange-neon), var(--red-neon));
       color: var(--white);
       border: none;
-      padding: 10px 20px;
+      padding: 10px 18px;
       font-size: 0.85rem;
       font-weight: 800;
       border-radius: 20px;
@@ -351,6 +351,8 @@
       width: 100%;
       max-width: 450px;
       padding: 20px;
+      max-height: 90vh;
+      overflow-y: auto;
     }
 
     .modal-header {
@@ -379,7 +381,7 @@
       border-radius: 8px;
       padding: 10px;
       margin-bottom: 15px;
-      max-height: 150px;
+      max-height: 130px;
       overflow-y: auto;
     }
 
@@ -408,14 +410,14 @@
       color: var(--gray-light);
     }
 
-    .form-group input {
+    .form-group input, .form-group select {
       width: 100%;
       padding: 10px;
       border-radius: 6px;
       border: 1px solid rgba(255,102,0,0.4);
       background: #09090d;
       color: #fff;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     .pix-box {
@@ -439,33 +441,76 @@
       word-break: break-all;
     }
 
-    /* RESPONSIVIDADE ESPECÍFICA PARA DISPOSITIVOS MÓVEIS (CELULARES) */
+    /* FOOTER */
+    footer {
+      background: #07070a;
+      border-top: 1px solid rgba(255, 102, 0, 0.3);
+      padding: 20px 15px;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.75rem;
+      color: var(--gray-text);
+    }
+
+    .footer-content strong {
+      color: var(--white);
+    }
+
+    /* RESPONSIVIDADE PARA CELULARES (MOSTRA DE 2 EM 2 ITEMS) */
     @media (max-width: 600px) {
       header {
-        padding: 6px 10px; /* Redução drástica para não tampar a tela */
+        padding: 8px 10px;
       }
       .logo-frame {
-        width: 50px; /* Logo menor no celular */
-        height: 50px;
+        width: 85px;
+        height: 85px;
       }
       .brand-title {
         font-size: 1.2rem;
       }
       .brand-subtitle {
+        font-size: 0.6rem;
+      }
+      
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      .card-img-container {
+        height: 110px;
+      }
+      .card-body {
+        padding: 8px 6px;
+      }
+      .card-title {
+        font-size: 0.8rem;
+      }
+      .card-desc {
+        font-size: 0.65rem;
+        margin-bottom: 6px;
+      }
+      .size-btn {
+        font-size: 0.55rem;
+        padding: 3px 0;
+      }
+      .size-btn strong {
         font-size: 0.65rem;
       }
-      .header-badges {
-        display: none; /* Esconde os badges no celular para poupar espaço vertical */
+      .selected-price {
+        font-size: 0.85rem;
       }
-      .category-title { 
-        font-size: 1.2rem; 
-      }
-      .cart-bar { 
-        padding: 10px 12px; 
-      }
-      .btn-checkout { 
-        padding: 8px 14px; 
-        font-size: 0.8rem; 
+      .btn-add {
+        padding: 5px 6px;
+        font-size: 0.6rem;
+        border-radius: 8px;
       }
     }
   </style>
@@ -480,17 +525,66 @@
       </div>
       <h1 class="brand-title">Cantinho da <span>Vovó</span></h1>
       <p class="brand-subtitle">MARMITAS CASEIRAS • QUALIDADE & SABOR NEON</p>
-      
-      <div class="header-badges">
-        <span class="badge">⚡ Retirada no Balcão</span>
-        <span class="badge badge-red">❖ Pagamento PIX</span>
-        <span class="badge">🔥 Comida Quentinha</span>
-      </div>
     </div>
   </header>
 
+  <!-- BARRA DE BUSCA -->
+  <div class="search-container">
+    <input type="text" id="search-bar" class="search-input" placeholder="🔍 Buscar pratos, combos ou bebidas..." onkeyup="filterItems()">
+  </div>
+
   <!-- CONTEÚDO PRINCIPAL -->
   <div class="container">
+
+    <!-- MENU COMBOS -->
+    <div class="category-section">
+      <div class="category-header">
+        <span class="category-icon">🔥</span>
+        <h2 class="category-title">Combos da Vovó</h2>
+      </div>
+
+      <div class="menu-grid">
+        <div class="card top-item">
+          <span class="badge-top">COMBO INDIVIDUAL</span>
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Combo Individual" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Combo 1: Marmita + Coca 300ml</h3>
+            <p class="card-desc">1 Marmita M de Frango Grelhado + 1 Coca Lata 300ml.</p>
+            
+            <div class="size-selector" data-item="combo-1">
+              <button class="size-btn active" onclick="selectSize(this, 'Único', 20.90)">Único<strong>R$ 20,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-combo-1">R$ 20,90</span>
+              <button class="btn-add" onclick="addToCart('Combo 1: Marmita + Coca', 'combo-1')">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card top-item">
+          <span class="badge-top">COMBO DUPLO</span>
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1560781290-7dc94c0f8f4f?auto=format&fit=crop&w=600&q=80" alt="Combo Duplo" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Combo 2: Casal Perfeito</h3>
+            <p class="card-desc">2 Marmitas M (Parmegiana Carne) + 1 Coca 600ml.</p>
+            
+            <div class="size-selector" data-item="combo-2">
+              <button class="size-btn active" onclick="selectSize(this, 'Único', 49.90)">Único<strong>R$ 49,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-combo-2">R$ 49,90</span>
+              <button class="btn-add" onclick="addToCart('Combo 2: Casal Perfeito', 'combo-2')">+ Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- MENU FRANGO -->
     <div class="category-section">
@@ -500,8 +594,6 @@
       </div>
 
       <div class="menu-grid">
-
-        <!-- FRANGO A PARMEGIANA -->
         <div class="card top-item">
           <span class="badge-top">⭐ TOP 1</span>
           <div class="card-img-container">
@@ -509,7 +601,7 @@
           </div>
           <div class="card-body">
             <h3 class="card-title">Frango a Parmegiana</h3>
-            <p class="card-desc">Acompanha arroz branco e batata frita crocante.</p>
+            <p class="card-desc">Acompanha arroz branco e batata frita.</p>
             
             <div class="size-selector" data-item="parmegiana-frango">
               <button class="size-btn active" onclick="selectSize(this, 'P', 17.90)">P<strong>R$ 17,90</strong></button>
@@ -519,19 +611,18 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-parmegiana-frango">R$ 17,90</span>
-              <button class="btn-add" onclick="addToCart('Frango a Parmegiana', 'parmegiana-frango')">+ Adicionar</button>
+              <button class="btn-add" onclick="addToCart('Frango a Parmegiana', 'parmegiana-frango')">+ Add</button>
             </div>
           </div>
         </div>
 
-        <!-- FRANGO GRELHADO -->
         <div class="card">
           <div class="card-img-container">
             <img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=600&q=80" alt="Frango Grelhado" class="card-img">
           </div>
           <div class="card-body">
             <h3 class="card-title">Frango Grelhado</h3>
-            <p class="card-desc">Acompanha arroz, feijão, macarrão, batata e farofa.</p>
+            <p class="card-desc">Arroz, feijão, macarrão, batata e farofa.</p>
             
             <div class="size-selector" data-item="frango-grelhado">
               <button class="size-btn active" onclick="selectSize(this, 'P', 14.90)">P<strong>R$ 14,90</strong></button>
@@ -541,19 +632,18 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-frango-grelhado">R$ 14,90</span>
-              <button class="btn-add" onclick="addToCart('Frango Grelhado', 'frango-grelhado')">+ Adicionar</button>
+              <button class="btn-add" onclick="addToCart('Frango Grelhado', 'frango-grelhado')">+ Add</button>
             </div>
           </div>
         </div>
 
-        <!-- FRANGO A MILANESA -->
         <div class="card">
           <div class="card-img-container">
             <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80" alt="Frango a Milanesa" class="card-img">
           </div>
           <div class="card-body">
-            <h3 class="card-title">Frango a Milanesa</h3>
-            <p class="card-desc">Acompanha arroz, feijão, macarrão, batata e farofa.</p>
+            <h3 class="card-title">Frango Milanesa</h3>
+            <p class="card-desc">Arroz, feijão, macarrão, batata e farofa.</p>
             
             <div class="size-selector" data-item="frango-milanesa">
               <button class="size-btn active" onclick="selectSize(this, 'P', 15.90)">P<strong>R$ 15,90</strong></button>
@@ -563,18 +653,17 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-frango-milanesa">R$ 15,90</span>
-              <button class="btn-add" onclick="addToCart('Frango a Milanesa', 'frango-milanesa')">+ Adicionar</button>
+              <button class="btn-add" onclick="addToCart('Frango a Milanesa', 'frango-milanesa')">+ Add</button>
             </div>
           </div>
         </div>
 
-        <!-- STROGONOFF DE FRANGO -->
         <div class="card">
           <div class="card-img-container">
             <img src="https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=600&q=80" alt="Strogonoff de Frango" class="card-img">
           </div>
           <div class="card-body">
-            <h3 class="card-title">Strogonoff de Frango</h3>
+            <h3 class="card-title">Strogonoff Frango</h3>
             <p class="card-desc">Acompanha arroz e batata palha.</p>
             
             <div class="size-selector" data-item="strogonoff-frango">
@@ -585,12 +674,11 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-strogonoff-frango">R$ 18,90</span>
-              <button class="btn-add" onclick="addToCart('Strogonoff de Frango', 'strogonoff-frango')">+ Adicionar</button>
+              <button class="btn-add" onclick="addToCart('Strogonoff de Frango', 'strogonoff-frango')">+ Add</button>
             </div>
           </div>
         </div>
 
-        <!-- OVO FRITO -->
         <div class="card">
           <span class="badge-top" style="background: linear-gradient(135deg, #ffcc00, #ff6600);">🍳 COM OVO</span>
           <div class="card-img-container">
@@ -598,21 +686,20 @@
           </div>
           <div class="card-body">
             <h3 class="card-title">Ovo Frito</h3>
-            <p class="card-desc">Acompanha arroz, feijão, macarrão, batata e farofa.</p>
+            <p class="card-desc">Arroz, feijão, macarrão, batata e farofa.</p>
             
             <div class="size-selector" data-item="ovo-frito">
               <button class="size-btn active" onclick="selectSize(this, 'P', 14.90)">P<strong>R$ 14,90</strong></button>
               <button class="size-btn" onclick="selectSize(this, 'M', 16.90)">M<strong>R$ 16,90</strong></button>
-              <button class="size-btn" onclick="selectSize(this, 'G (+1 Ovo)', 18.90)">G (+1 Ovo)<strong>R$ 18,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'G (+1 Ovo)', 18.90)">G<strong>R$ 18,90</strong></button>
             </div>
 
             <div class="card-footer">
               <span class="selected-price" id="price-ovo-frito">R$ 14,90</span>
-              <button class="btn-add" onclick="addToCart('Ovo Frito', 'ovo-frito')">+ Adicionar</button>
+              <button class="btn-add" onclick="addToCart('Ovo Frito', 'ovo-frito')">+ Add</button>
             </div>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -624,8 +711,6 @@
       </div>
 
       <div class="menu-grid">
-
-        <!-- BIFE GRELHADO -->
         <div class="card top-item">
           <span class="badge-top">⭐ TOP 2</span>
           <div class="card-img-container">
@@ -633,7 +718,7 @@
           </div>
           <div class="card-body">
             <h3 class="card-title">Bife Grelhado</h3>
-            <p class="card-desc">Acompanha arroz, feijão, macarrão, batata e farofa.</p>
+            <p class="card-desc">Arroz, feijão, macarrão, batata e farofa.</p>
             
             <div class="size-selector" data-item="bife-grelhado">
               <button class="size-btn active" onclick="selectSize(this, 'P', 16.90)">P<strong>R$ 16,90</strong></button>
@@ -643,19 +728,18 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-bife-grelhado">R$ 16,90</span>
-              <button class="btn-add" onclick="addToCart('Bife Grelhado', 'bife-grelhado')">+ Adicionar</button>
+              <button class="btn-add" onclick="addToCart('Bife Grelhado', 'bife-grelhado')">+ Add</button>
             </div>
           </div>
         </div>
 
-        <!-- BIFE ACEBOLADO -->
         <div class="card">
           <div class="card-img-container">
             <img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=600&q=80" alt="Bife Acebolado" class="card-img">
           </div>
           <div class="card-body">
             <h3 class="card-title">Bife Acebolado</h3>
-            <p class="card-desc">Acompanha arroz, feijão, macarrão, batata e farofa.</p>
+            <p class="card-desc">Arroz, feijão, macarrão, batata e farofa.</p>
             
             <div class="size-selector" data-item="bife-acebolado">
               <button class="size-btn active" onclick="selectSize(this, 'P', 17.90)">P<strong>R$ 17,90</strong></button>
@@ -665,18 +749,17 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-bife-acebolado">R$ 17,90</span>
-              <button class="btn-add" onclick="addToCart('Bife Acebolado', 'bife-acebolado')">+ Adicionar</button>
+              <button class="btn-add" onclick="addToCart('Bife Acebolado', 'bife-acebolado')">+ Add</button>
             </div>
           </div>
         </div>
 
-        <!-- BIFE A PARMEGIANA -->
         <div class="card">
           <div class="card-img-container">
             <img src="https://images.unsplash.com/photo-1560781290-7dc94c0f8f4f?auto=format&fit=crop&w=600&q=80" alt="Bife a Parmegiana" class="card-img">
           </div>
           <div class="card-body">
-            <h3 class="card-title">Bife a Parmegiana</h3>
+            <h3 class="card-title">Bife Parmegiana</h3>
             <p class="card-desc">Acompanha arroz e batata frita.</p>
             
             <div class="size-selector" data-item="bife-parmegiana">
@@ -687,19 +770,18 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-bife-parmegiana">R$ 19,90</span>
-              <button class="btn-add" onclick="addToCart('Bife a Parmegiana', 'bife-parmegiana')">+ Adicionar</button>
+              <button class="btn-add" onclick="addToCart('Bife a Parmegiana', 'bife-parmegiana')">+ Add</button>
             </div>
           </div>
         </div>
 
-        <!-- BIFE A CAVALO -->
         <div class="card">
           <div class="card-img-container">
             <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=600&q=80" alt="Bife a Cavalo" class="card-img">
           </div>
           <div class="card-body">
             <h3 class="card-title">Bife a Cavalo</h3>
-            <p class="card-desc">Acompanha arroz, feijão, macarrão, batata e farofa.</p>
+            <p class="card-desc">Arroz, feijão, macarrão, batata e farofa.</p>
             
             <div class="size-selector" data-item="bife-cavalo">
               <button class="size-btn active" onclick="selectSize(this, 'P', 17.90)">P<strong>R$ 17,90</strong></button>
@@ -709,18 +791,17 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-bife-cavalo">R$ 17,90</span>
-              <button class="btn-add" onclick="addToCart('Bife a Cavalo', 'bife-cavalo')">+ Adicionar</button>
+              <button class="btn-add" onclick="addToCart('Bife a Cavalo', 'bife-cavalo')">+ Add</button>
             </div>
           </div>
         </div>
 
-        <!-- STROGONOFF DE CARNE -->
         <div class="card">
           <div class="card-img-container">
             <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80" alt="Strogonoff de Carne" class="card-img">
           </div>
           <div class="card-body">
-            <h3 class="card-title">Strogonoff de Carne</h3>
+            <h3 class="card-title">Strogonoff Carne</h3>
             <p class="card-desc">Acompanha arroz e batata palha.</p>
             
             <div class="size-selector" data-item="strogonoff-carne">
@@ -731,19 +812,18 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-strogonoff-carne">R$ 18,90</span>
-              <button class="btn-add" onclick="addToCart('Strogonoff de Carne', 'strogonoff-carne')">+ Adicionar</button>
+              <button class="btn-add" onclick="addToCart('Strogonoff de Carne', 'strogonoff-carne')">+ Add</button>
             </div>
           </div>
         </div>
 
-        <!-- BIFE A MILANESA -->
         <div class="card">
           <div class="card-img-container">
             <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=600&q=80" alt="Bife a Milanesa" class="card-img">
           </div>
           <div class="card-body">
-            <h3 class="card-title">Bife a Milanesa</h3>
-            <p class="card-desc">Acompanha arroz, feijão, macarrão, batata e farofa.</p>
+            <h3 class="card-title">Bife Milanesa</h3>
+            <p class="card-desc">Arroz, feijão, macarrão, batata e farofa.</p>
             
             <div class="size-selector" data-item="bife-milanesa">
               <button class="size-btn active" onclick="selectSize(this, 'P', 17.90)">P<strong>R$ 17,90</strong></button>
@@ -753,26 +833,101 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-bife-milanesa">R$ 17,90</span>
-              <button class="btn-add" onclick="addToCart('Bife a Milanesa', 'bife-milanesa')">+ Adicionar</button>
+              <button class="btn-add" onclick="addToCart('Bife a Milanesa', 'bife-milanesa')">+ Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REFRIGERANTES -->
+    <div class="category-section">
+      <div class="category-header">
+        <span class="category-icon">🥤</span>
+        <h2 class="category-title">Bebidas & Refrigerantes</h2>
+      </div>
+
+      <div class="menu-grid">
+        <div class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80" alt="Coca Cola Lata Normal" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Coca-Cola Normal (350ml)</h3>
+            <p class="card-desc">Lata gelada 350ml.</p>
+            
+            <div class="size-selector" data-item="coca-lata">
+              <button class="size-btn active" onclick="selectSize(this, 'Lata', 5.00)">Lata<strong>R$ 5,00</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-coca-lata">R$ 5,00</span>
+              <button class="btn-add" onclick="addToCart('Coca-Cola Normal 350ml', 'coca-lata')">+ Add</button>
             </div>
           </div>
         </div>
 
+        <div class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&w=600&q=80" alt="Coca Cola Lata Zero" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Coca-Cola Zero (350ml)</h3>
+            <p class="card-desc">Lata gelada 350ml sem açúcar.</p>
+            
+            <div class="size-selector" data-item="coca-zero">
+              <button class="size-btn active" onclick="selectSize(this, 'Lata', 5.00)">Lata<strong>R$ 5,00</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-coca-zero">R$ 5,00</span>
+              <button class="btn-add" onclick="addToCart('Coca-Cola Zero 350ml', 'coca-zero')">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80" alt="Coca Cola 600ml" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Coca-Cola Normal (600ml)</h3>
+            <p class="card-desc">Garrafa pet gelada 600ml.</p>
+            
+            <div class="size-selector" data-item="coca-600">
+              <button class="size-btn active" onclick="selectSize(this, '600ml', 8.00)">600ml<strong>R$ 8,00</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-coca-600">R$ 8,00</span>
+              <button class="btn-add" onclick="addToCart('Coca-Cola Normal 600ml', 'coca-600')">+ Add</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
   </div>
 
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="footer-content">
+      <p><strong>Cantinho da Vovó Marmitas Caseiras</strong></p>
+      <p>Rua Exemplo, 123 - Centro | Atendimento: Seg a Sáb das 10h às 15h</p>
+      <p>© 2026 Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
   <!-- BARRA DE PEDIDOS FLUTUANTE -->
   <div class="cart-bar">
     <div class="cart-info">
-      <span class="cart-count" id="cart-count">0 marmita(s) selecionada(s)</span>
+      <span class="cart-count" id="cart-count">0 selecionada(s)</span>
       <div class="cart-total">Total: <span id="cart-total">R$ 0,00</span></div>
     </div>
-    <button class="btn-checkout" onclick="openModal()">Ver Pedido & Retirar ➔</button>
+    <button class="btn-checkout" onclick="openModal()">Ver Pedido ➔</button>
   </div>
 
-  <!-- MODAL DE CONFIRMAÇÃO & PIX -->
+  <!-- MODAL DE CONFIRMAÇÃO -->
   <div class="modal" id="checkout-modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -780,23 +935,39 @@
         <button class="close-btn" onclick="closeModal()">&times;</button>
       </div>
 
-      <div class="cart-summary" id="cart-summary-list">
-        <!-- Itens aparecem aqui -->
-      </div>
+      <div class="cart-summary" id="cart-summary-list"></div>
 
       <div class="form-group">
-        <label for="client-name">Nome Completo do Cliente:</label>
+        <label for="client-name">Nome Completo:</label>
         <input type="text" id="client-name" placeholder="Ex: João Silva">
       </div>
 
+      <!-- TIPO DE ENTREGA -->
       <div class="form-group">
-        <label>Opção de Retirada:</label>
-        <input type="text" value="📍 Retirada Presencial na Loja (Balcão)" disabled>
+        <label for="delivery-type">Tipo de Entrega:</label>
+        <select id="delivery-type" onchange="toggleAddressField()">
+          <option value="retirada">📍 Retirada Presencial na Loja (Grátis)</option>
+          <option value="entrega">🛵 Entrega em Domicílio (Com Taxa)</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="address-group" style="display: none;">
+        <label for="client-address">Endereço de Entrega Completo:</label>
+        <input type="text" id="client-address" placeholder="Rua, Número, Bairro, Ponto de Referência">
+      </div>
+
+      <!-- PRECISA DE TALHER -->
+      <div class="form-group">
+        <label for="cutlery-option">Precisa de Talheres Descartáveis?</label>
+        <select id="cutlery-option">
+          <option value="Não">Não precisa</option>
+          <option value="Sim">Sim, por favor enviar talheres</option>
+        </select>
       </div>
 
       <div class="pix-box">
         <p style="font-size: 0.85rem; font-weight: bold;">💸 Pagamento via PIX</p>
-        <p style="font-size: 0.75rem; color: var(--gray-text); margin-top: 4px;">Clique abaixo para copiar a chave PIX. Apresente o comprovante na retirada.</p>
+        <p style="font-size: 0.75rem; color: var(--gray-text); margin-top: 4px;">Clique abaixo para copiar a chave PIX. Envie o comprovante via WhatsApp.</p>
         <div class="pix-key" onclick="copyPixKey()">cantinhodavovo.pix@gmail.com 📋</div>
         <span id="copy-msg" style="display:none; font-size:0.75rem; color: var(--orange-neon); margin-top:4px;">Chave copiada!</span>
       </div>
@@ -807,7 +978,6 @@
 
   <script>
     const PHONE_NUMBER = "5511999999999";
-
     const selectedState = {};
     let cart = [];
 
@@ -816,7 +986,6 @@
       const activeBtn = selector.querySelector('.size-btn.active');
       const sizeStr = activeBtn.innerText.split('R$')[0].trim();
       const priceVal = parseFloat(activeBtn.innerText.split('R$')[1].replace(',', '.').trim());
-      
       selectedState[itemId] = { size: sizeStr, price: priceVal };
     });
 
@@ -847,8 +1016,34 @@
       const count = cart.length;
       const total = cart.reduce((sum, item) => sum + item.price, 0);
 
-      document.getElementById('cart-count').innerText = `${count} marmita(s) selecionada(s)`;
+      document.getElementById('cart-count').innerText = `${count} selecionada(s)`;
       document.getElementById('cart-total').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+
+    function filterItems() {
+      const query = document.getElementById('search-bar').value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+
+      cards.forEach(card => {
+        const title = card.querySelector('.card-title').innerText.toLowerCase();
+        const desc = card.querySelector('.card-desc').innerText.toLowerCase();
+        
+        if (title.includes(query) || desc.includes(query)) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+
+    function toggleAddressField() {
+      const deliveryType = document.getElementById('delivery-type').value;
+      const addressGroup = document.getElementById('address-group');
+      if (deliveryType === 'entrega') {
+        addressGroup.style.display = 'block';
+      } else {
+        addressGroup.style.display = 'none';
+      }
     }
 
     function renderCartSummary() {
@@ -875,7 +1070,7 @@
 
     function openModal() {
       if (cart.length === 0) {
-        alert("Por favor, selecione ao menos uma marmita antes de finalizar!");
+        alert("Por favor, selecione ao menos um item antes de finalizar!");
         return;
       }
       renderCartSummary();
@@ -895,8 +1090,17 @@
 
     function confirmOrder() {
       const name = document.getElementById('client-name').value.trim();
+      const deliveryType = document.getElementById('delivery-type').value;
+      const address = document.getElementById('client-address').value.trim();
+      const cutlery = document.getElementById('cutlery-option').value;
+
       if (!name) {
-        alert("Por favor, digite seu nome para identificação do pedido.");
+        alert("Por favor, digite seu nome.");
+        return;
+      }
+
+      if (deliveryType === 'entrega' && !address) {
+        alert("Por favor, informe seu endereço para entrega.");
         return;
       }
 
@@ -905,7 +1109,11 @@
       let message = `*🧾 NOVO PEDIDO - CANTINHO DA VOVÓ*\n`;
       message += `-----------------------------------\n`;
       message += `👤 *Cliente:* ${name}\n`;
-      message += `📍 *Retirada:* Balcão (Presencial)\n`;
+      message += `🛵 *Tipo:* ${deliveryType === 'entrega' ? 'Entrega em Domicílio' : 'Retirada no Balcão'}\n`;
+      if (deliveryType === 'entrega') {
+        message += `📍 *Endereço:* ${address}\n`;
+      }
+      message += `🍴 *Precisa de Talher:* ${cutlery}\n`;
       message += `-----------------------------------\n`;
       message += `*ITENS DO PEDIDO:*\n`;
 
@@ -914,7 +1122,7 @@
       });
 
       message += `-----------------------------------\n`;
-      message += `💰 *TOTAL:* R$ ${total.toFixed(2).replace('.', ',')}\n`;
+      message += `💰 *TOTAL DO PEDIDO:* R$ ${total.toFixed(2).replace('.', ',')}\n`;
       message += `💳 *Pagamento:* PIX\n`;
 
       window.open(`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
