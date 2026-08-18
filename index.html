@@ -930,180 +930,203 @@
             </div>
           </div>
         </div>
-
-        <div class="card">
-          <div class="card-img-container">
-            <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80" alt="Coca Cola 600ml" class="card-img">
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">Coca-Cola Normal (600ml)</h3>
-            <p class="card-desc">Garrafa pet gelada 600ml.</p>
-            
-            <div class="size-selector" data-item="coca-600">
-              <button class="size-btn active" onclick="selectSize(this, '600ml', 8.00)">600ml<strong>R$ 8,00</strong></button>
-            </div>
-
-            <div class="card-footer">
-              <span class="selected-price" id="price-coca-600">R$ 8,00</span>
-              <button class="btn-add" onclick="addToCart('Coca-Cola Normal 600ml', 'coca-600', 'bebida')">+ Add</button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
   </div>
 
-  <!-- RODAPÉ -->
+  <!-- FLOATING CART BAR -->
+  <div class="cart-bar">
+    <div>
+      <div class="cart-count" id="cart-count">0 itens no carrinho</div>
+      <div class="cart-total">Total: <span id="cart-total">R$ 0,00</span></div>
+    </div>
+    <button class="btn-checkout" onclick="openModal()">Finalizar Pedido</button>
+  </div>
+
+  <!-- MODAL DE CHECKOUT -->
+  <div class="modal" id="checkout-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Finalizar Pedido</h3>
+        <button class="close-btn" onclick="closeModal()">×</button>
+      </div>
+
+      <div class="cart-summary" id="cart-items">
+        <!-- ITENS DO CARRINHO FICAM AQUI DENTRO -->
+      </div>
+
+      <form id="order-form" onsubmit="submitOrder(event)">
+        <div class="form-group">
+          <label for="nome">Nome Completo:</label>
+          <input type="text" id="nome" required placeholder="Digite seu nome">
+        </div>
+
+        <div class="form-group">
+          <label for="tipo-entrega">Tipo de Pedido:</label>
+          <select id="tipo-entrega" onchange="toggleEntrega(this.value)">
+            <option value="entrega">Entrega em Domíclio</option>
+            <option value="retirada">Retirada na Loja</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="group-endereco">
+          <label for="endereco">Endereço de Entrega:</label>
+          <input type="text" id="endereco" placeholder="Rua, Número, Bairro, Ponto de Ref.">
+        </div>
+
+        <div class="form-group">
+          <label for="pagamento">Forma de Pagamento:</label>
+          <select id="pagamento">
+            <!-- As opções são geradas dinamicamente via JS -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="observacoes">Observações do Pedido:</label>
+          <input type="text" id="observacoes" placeholder="Ex: Sem cebola, trocar arroz por batata...">
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar Pedido no WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
   <footer>
     <div class="footer-content">
-      <p><strong>Cantinho da Vovó Marmitas Caseiras</strong></p>
-      <p>Rua Exemplo, 123 - Centro | Atendimento: Seg a Sáb das 10h às 15h</p>
+      <p><strong>Cantinho da Vovó Marmitas</strong></p>
+      <p>O melhor sabor caseiro da região • Entrega Rápida</p>
       <p>© 2026 Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <!-- BARRA DE PEDIDOS FLUTUANTE -->
-  <div class="cart-bar">
-    <div class="cart-info">
-      <span class="cart-count" id="cart-count">0 selecionada(s)</span>
-      <div class="cart-total">Total: <span id="cart-total">R$ 0,00</span></div>
-    </div>
-    <button class="btn-checkout" onclick="openModal()">Ver Pedido ➔</button>
-  </div>
-
-  <!-- MODAL DE CONFIRMAÇÃO -->
-  <div class="modal" id="checkout-modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title">Seu Pedido</h2>
-        <button class="close-btn" onclick="closeModal()">&times;</button>
-      </div>
-
-      <div class="cart-summary" id="cart-summary-list"></div>
-
-      <div class="form-group">
-        <label for="client-name">Nome Completo:</label>
-        <input type="text" id="client-name" placeholder="Ex: João Silva">
-      </div>
-
-      <!-- TIPO DE ENTREGA -->
-      <div class="form-group">
-        <label for="delivery-type">Tipo de Entrega:</label>
-        <select id="delivery-type" onchange="toggleAddressField()">
-          <option value="retirada">📍 Retirada Presencial na Loja (Grátis)</option>
-          <option value="entrega">🛵 Entrega em Domicílio</option>
-        </select>
-      </div>
-
-      <div class="form-group" id="address-group" style="display: none;">
-        <label for="client-address">Endereço Completo de Entrega:</label>
-        <input type="text" id="client-address" placeholder="Rua, Número, Bairro, Ponto de ref.">
-      </div>
-
-      <div class="form-group">
-        <label for="payment-method">Forma de Pagamento:</label>
-        <select id="payment-method">
-          <option value="Pix">Pix</option>
-          <option value="Cartão de Crédito/Débito">Cartão de Crédito/Débito</option>
-          <option value="Dinheiro">Dinheiro</option>
-        </select>
-      </div>
-
-      <button class="btn-submit" onclick="sendWhatsApp()">Enviar Pedido no WhatsApp 💬</button>
-    </div>
-  </div>
-
+  <!-- JAVASCRIPT -->
   <script>
     let cart = [];
-    const selectedSizes = {};
+    let selectedSizes = {};
 
     function selectSize(button, size, price) {
-      const parentContainer = button.closest('.size-selector');
-      const itemId = parentContainer.getAttribute('data-item');
+      const container = button.closest('.size-selector');
+      const itemId = container.getAttribute('data-item');
 
-      parentContainer.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
+      container.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
 
-      selectedSizes[itemId] = { size, price };
-
-      const priceDisplay = document.getElementById(`price-${itemId}`);
-      if (priceDisplay) {
-        priceDisplay.innerText = `R$ ${price.toFixed(2).replace('.', ',')}`;
-      }
+      selectedSizes[itemId] = { size: size, price: price };
+      document.getElementById(`price-${itemId}`).innerText = `R$ ${price.toFixed(2).replace('.', ',')}`;
     }
 
-    function addToCart(title, itemId, type) {
-      let selected = selectedSizes[itemId];
-      if (!selected) {
+    function addToCart(name, itemId, category) {
+      let sizeInfo = selectedSizes[itemId];
+      
+      if (!sizeInfo) {
         const defaultBtn = document.querySelector(`[data-item="${itemId}"] .size-btn.active`);
         if (defaultBtn) {
-          const size = defaultBtn.innerText.split('R$')[0].trim();
-          const price = parseFloat(defaultBtn.querySelector('strong').innerText.replace('R$', '').replace(',', '.').trim());
-          selected = { size, price };
+          const sizeText = defaultBtn.innerText.split('R$')[0].trim();
+          const priceText = defaultBtn.querySelector('strong').innerText.replace('R$', '').replace(',', '.').trim();
+          sizeInfo = { size: sizeText, price: parseFloat(priceText) };
         } else {
-          selected = { size: 'Padrão', price: 0 };
+          sizeInfo = { size: 'Padrão', price: 0 };
         }
       }
 
       cart.push({
-        title: title,
-        size: selected.size,
-        price: selected.price,
-        type: type
+        name: name,
+        size: sizeInfo.size,
+        price: sizeInfo.price
       });
 
-      updateCartUI();
+      updateCart();
     }
 
     function removeFromCart(index) {
       cart.splice(index, 1);
-      updateCartUI();
-      renderCartSummary();
+      updateCart();
     }
 
-    function updateCartUI() {
-      const cartCount = document.getElementById('cart-count');
-      const cartTotal = document.getElementById('cart-total');
-      
-      const total = cart.reduce((sum, item) => sum + item.price, 0);
+    function updateCart() {
+      const countEl = document.getElementById('cart-count');
+      const totalEl = document.getElementById('cart-total');
+      const itemsEl = document.getElementById('cart-items');
 
-      cartCount.innerText = `${cart.length} item(ns) selecionado(s)`;
-      cartTotal.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+      countEl.innerText = `${cart.length} itens no carrinho`;
+
+      let total = cart.reduce((sum, item) => sum + item.price, 0);
+      totalEl.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+
+      itemsEl.innerHTML = '';
+      if (cart.length === 0) {
+        itemsEl.innerHTML = '<p style="text-align:center; color: var(--gray-text); font-size: 0.8rem;">Seu carrinho está vazio</p>';
+      } else {
+        cart.forEach((item, index) => {
+          itemsEl.innerHTML += `
+            <div class="cart-item-row">
+              <span>${item.name} (${item.size})</span>
+              <span>R$ ${item.price.toFixed(2).replace('.', ',')} <span class="remove-item" onclick="removeFromCart(${index})">✕</span></span>
+            </div>
+          `;
+        });
+      }
     }
 
     function openModal() {
       if (cart.length === 0) {
-        alert("Seu carrinho está vazio! Adicione itens antes de continuar.");
+        alert('Adicione pelo menos um item ao seu carrinho!');
         return;
       }
-      renderCartSummary();
       document.getElementById('checkout-modal').style.display = 'flex';
+      
+      // Inicializa o tipo de entrega e as opções de pagamento ao abrir
+      const tipoEntrega = document.getElementById('tipo-entrega').value;
+      toggleEntrega(tipoEntrega);
     }
 
     function closeModal() {
       document.getElementById('checkout-modal').style.display = 'none';
     }
 
-    function renderCartSummary() {
-      const summaryList = document.getElementById('cart-summary-list');
-      summaryList.innerHTML = '';
+    function toggleEntrega(tipo) {
+      const groupEndereco = document.getElementById('group-endereco');
+      const inputEndereco = document.getElementById('endereco');
 
-      cart.forEach((item, index) => {
-        const row = document.createElement('div');
-        row.className = 'cart-item-row';
-        row.innerHTML = `
-          <span>${item.title} (${item.size}) - R$ ${item.price.toFixed(2).replace('.', ',')}</span>
-          <span class="remove-item" onclick="removeFromCart(${index})">❌</span>
-        `;
-        summaryList.appendChild(row);
-      });
+      if (tipo === 'retirada') {
+        groupEndereco.style.display = 'none';
+        inputEndereco.removeAttribute('required');
+      } else {
+        groupEndereco.style.display = 'block';
+        inputEndereco.setAttribute('required', 'true');
+      }
+
+      // Atualiza as opções de pagamento dinamicamente com base na opção selecionada
+      updatePaymentOptions(tipo);
     }
 
-    function toggleAddressField() {
-      const deliveryType = document.getElementById('delivery-type').value;
-      const addressGroup = document.getElementById('address-group');
-      addressGroup.style.display = deliveryType === 'entrega' ? 'block' : 'none';
+    function updatePaymentOptions(tipo) {
+      const pagamentoSelect = document.getElementById('pagamento');
+      pagamentoSelect.innerHTML = '';
+
+      if (tipo === 'entrega') {
+        // Para Entrega: Apenas PIX
+        const optPix = document.createElement('option');
+        optPix.value = 'PIX';
+        optPix.textContent = 'PIX';
+        pagamentoSelect.appendChild(optPix);
+      } else {
+        // Para Retirada na Loja: PIX, Débito e Dinheiro
+        const options = [
+          { value: 'PIX', text: 'PIX' },
+          { value: 'Cartão de Débito', text: 'Cartão de Débito' },
+          { value: 'Dinheiro', text: 'Dinheiro' }
+        ];
+
+        options.forEach(opt => {
+          const el = document.createElement('option');
+          el.value = opt.value;
+          el.textContent = opt.text;
+          pagamentoSelect.appendChild(el);
+        });
+      }
     }
 
     function filterItems() {
@@ -1113,56 +1136,49 @@
       cards.forEach(card => {
         const title = card.querySelector('.card-title').innerText.toLowerCase();
         const desc = card.querySelector('.card-desc').innerText.toLowerCase();
+
         if (title.includes(input) || desc.includes(input)) {
-          card.style.display = "flex";
+          card.style.display = 'flex';
         } else {
-          card.style.display = "none";
+          card.style.display = 'none';
         }
       });
     }
 
-    function sendWhatsApp() {
-      const name = document.getElementById('client-name').value.trim();
-      const deliveryType = document.getElementById('delivery-type').value;
-      const address = document.getElementById('client-address').value.trim();
-      const payment = document.getElementById('payment-method').value;
+    function submitOrder(e) {
+      e.preventDefault();
 
-      if (!name) {
-        alert("Por favor, informe seu nome.");
-        return;
+      const nome = document.getElementById('nome').value;
+      const tipoEntrega = document.getElementById('tipo-entrega').value;
+      const endereco = document.getElementById('endereco').value;
+      const pagamento = document.getElementById('pagamento').value;
+      const obs = document.getElementById('observacoes').value;
+
+      let total = cart.reduce((sum, item) => sum + item.price, 0);
+
+      let msg = `*--- PEDIDO CANTINHO DA VOVÓ ---*\n\n`;
+      msg += `*Cliente:* ${nome}\n`;
+      msg += `*Tipo de Pedido:* ${tipoEntrega === 'entrega' ? 'Entrega em Domicílio' : 'Retirada na Loja'}\n`;
+      if (tipoEntrega === 'entrega') {
+        msg += `*Endereço:* ${endereco}\n`;
       }
+      msg += `*Forma de Pagamento:* ${pagamento}\n\n`;
+      msg += `*ITENS DO PEDIDO:*\n`;
 
-      if (deliveryType === 'entrega' && !address) {
-        alert("Por favor, informe o endereço de entrega.");
-        return;
-      }
-
-      // Validação: Não permitir pedidos contendo apenas refrigerantes/bebidas
-      const hasFoodItem = cart.some(item => item.type === 'marmita');
-      if (!hasFoodItem) {
-        alert("Atenção: Não é possível fazer o pedido apenas de refrigerante. Por favor, adicione pelo menos uma marmita, escondidinho ou combo ao seu carrinho.");
-        return;
-      }
-
-      let orderText = `*NOVO PEDIDO - CANTINHO DA VOVÓ*\n\n`;
-      orderText += `*Cliente:* ${name}\n`;
-      orderText += `*Tipo:* ${deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega em Domicílio'}\n`;
-      if (deliveryType === 'entrega') {
-        orderText += `*Endereço:* ${address}\n`;
-      }
-      orderText += `*Pagamento:* ${payment}\n\n`;
-      orderText += `*Itens do Pedido:*\n`;
-
-      cart.forEach((item, index) => {
-        orderText += `${index + 1}. ${item.title} (${item.size}) - R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
+      cart.forEach(item => {
+        msg += `• ${item.name} (${item.size}) - R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
       });
 
-      const total = cart.reduce((sum, item) => sum + item.price, 0);
-      orderText += `\n*Total:* R$ ${total.toFixed(2).replace('.', ',')}`;
+      msg += `\n*TOTAL:* R$ ${total.toFixed(2).replace('.', ',')}\n`;
 
-      const phoneNumber = "5500000000000"; // Substitua pelo seu número do WhatsApp com DDD
-      const encodedText = encodeURIComponent(orderText);
-      window.open(`https://wa.me/${phoneNumber}?text=${encodedText}`, '_blank');
+      if (obs) {
+        msg += `*Observações:* ${obs}\n`;
+      }
+
+      const telefoneWhatsApp = '5500000000000'; // Substitua pelo seu número do WhatsApp com DDD
+      const url = `https://api.whatsapp.com/send?phone=${telefoneWhatsApp}&text=${encodeURIComponent(msg)}`;
+
+      window.open(url, '_blank');
     }
   </script>
 </body>
