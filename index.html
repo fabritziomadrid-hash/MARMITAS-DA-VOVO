@@ -420,25 +420,18 @@
       font-size: 0.85rem;
     }
 
-    .pix-box {
-      background: #0a0a0f;
-      border: 1px dashed var(--orange-neon);
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: #fff;
+      border: none;
       padding: 12px;
-      text-align: center;
-      border-radius: 8px;
-      margin: 12px 0;
-    }
-
-    .pix-key {
-      color: var(--orange-neon);
+      font-size: 1rem;
       font-weight: 800;
-      font-size: 0.85rem;
-      margin-top: 4px;
-      background: #15151e;
-      padding: 6px;
-      border-radius: 4px;
+      border-radius: 8px;
       cursor: pointer;
-      word-break: break-all;
+      text-transform: uppercase;
+      margin-top: 10px;
     }
 
     /* FOOTER */
@@ -464,7 +457,7 @@
       color: var(--white);
     }
 
-    /* RESPONSIVIDADE PARA CELULARES (MOSTRA DE 2 EM 2 ITEMS) */
+    /* RESPONSIVIDADE PARA CELULARES */
     @media (max-width: 600px) {
       header {
         padding: 8px 10px;
@@ -559,7 +552,7 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-combo-1">R$ 20,90</span>
-              <button class="btn-add" onclick="addToCart('Combo 1: Marmita + Coca', 'combo-1')">+ Add</button>
+              <button class="btn-add" onclick="addToCart('Combo 1: Marmita + Coca', 'combo-1', 'marmita')">+ Add</button>
             </div>
           </div>
         </div>
@@ -579,7 +572,59 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-combo-2">R$ 49,90</span>
-              <button class="btn-add" onclick="addToCart('Combo 2: Casal Perfeito', 'combo-2')">+ Add</button>
+              <button class="btn-add" onclick="addToCart('Combo 2: Casal Perfeito', 'combo-2', 'marmita')">+ Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENU ESCONDIDINHO -->
+    <div class="category-section">
+      <div class="category-header">
+        <span class="category-icon">🥘</span>
+        <h2 class="category-title">Menu Escondidinho</h2>
+      </div>
+
+      <div class="menu-grid">
+        <div class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80" alt="Escondidinho Strogonoff de Carne" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Escondidinho Strogonoff Carne</h3>
+            <p class="card-desc">Purê cremoso de mandioca recheado com strogonoff de carne e gratinado.</p>
+            
+            <div class="size-selector" data-item="escondidinho-carne">
+              <button class="size-btn active" onclick="selectSize(this, 'P', 19.90)">P<strong>R$ 19,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'M', 22.90)">M<strong>R$ 22,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'G', 25.90)">G<strong>R$ 25,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-escondidinho-carne">R$ 19,90</span>
+              <button class="btn-add" onclick="addToCart('Escondidinho Strogonoff Carne', 'escondidinho-carne', 'marmita')">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img-container">
+            <img src="https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=600&q=80" alt="Escondidinho Strogonoff de Frango" class="card-img">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Escondidinho Strogonoff Frango</h3>
+            <p class="card-desc">Purê cremoso de batata recheado com strogonoff de frango e gratinado.</p>
+            
+            <div class="size-selector" data-item="escondidinho-frango">
+              <button class="size-btn active" onclick="selectSize(this, 'P', 18.90)">P<strong>R$ 18,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'M', 20.90)">M<strong>R$ 20,90</strong></button>
+              <button class="size-btn" onclick="selectSize(this, 'G', 23.90)">G<strong>R$ 23,90</strong></button>
+            </div>
+
+            <div class="card-footer">
+              <span class="selected-price" id="price-escondidinho-frango">R$ 18,90</span>
+              <button class="btn-add" onclick="addToCart('Escondidinho Strogonoff Frango', 'escondidinho-frango', 'marmita')">+ Add</button>
             </div>
           </div>
         </div>
@@ -611,7 +656,7 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-parmegiana-frango">R$ 17,90</span>
-              <button class="btn-add" onclick="addToCart('Frango a Parmegiana', 'parmegiana-frango')">+ Add</button>
+              <button class="btn-add" onclick="addToCart('Frango a Parmegiana', 'parmegiana-frango', 'marmita')">+ Add</button>
             </div>
           </div>
         </div>
@@ -632,7 +677,7 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-frango-grelhado">R$ 14,90</span>
-              <button class="btn-add" onclick="addToCart('Frango Grelhado', 'frango-grelhado')">+ Add</button>
+              <button class="btn-add" onclick="addToCart('Frango Grelhado', 'frango-grelhado', 'marmita')">+ Add</button>
             </div>
           </div>
         </div>
@@ -653,7 +698,7 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-frango-milanesa">R$ 15,90</span>
-              <button class="btn-add" onclick="addToCart('Frango a Milanesa', 'frango-milanesa')">+ Add</button>
+              <button class="btn-add" onclick="addToCart('Frango a Milanesa', 'frango-milanesa', 'marmita')">+ Add</button>
             </div>
           </div>
         </div>
@@ -674,7 +719,7 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-strogonoff-frango">R$ 18,90</span>
-              <button class="btn-add" onclick="addToCart('Strogonoff de Frango', 'strogonoff-frango')">+ Add</button>
+              <button class="btn-add" onclick="addToCart('Strogonoff de Frango', 'strogonoff-frango', 'marmita')">+ Add</button>
             </div>
           </div>
         </div>
@@ -696,7 +741,7 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-ovo-frito">R$ 14,90</span>
-              <button class="btn-add" onclick="addToCart('Ovo Frito', 'ovo-frito')">+ Add</button>
+              <button class="btn-add" onclick="addToCart('Ovo Frito', 'ovo-frito', 'marmita')">+ Add</button>
             </div>
           </div>
         </div>
@@ -728,7 +773,7 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-bife-grelhado">R$ 16,90</span>
-              <button class="btn-add" onclick="addToCart('Bife Grelhado', 'bife-grelhado')">+ Add</button>
+              <button class="btn-add" onclick="addToCart('Bife Grelhado', 'bife-grelhado', 'marmita')">+ Add</button>
             </div>
           </div>
         </div>
@@ -749,7 +794,7 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-bife-acebolado">R$ 17,90</span>
-              <button class="btn-add" onclick="addToCart('Bife Acebolado', 'bife-acebolado')">+ Add</button>
+              <button class="btn-add" onclick="addToCart('Bife Acebolado', 'bife-acebolado', 'marmita')">+ Add</button>
             </div>
           </div>
         </div>
@@ -770,7 +815,7 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-bife-parmegiana">R$ 19,90</span>
-              <button class="btn-add" onclick="addToCart('Bife a Parmegiana', 'bife-parmegiana')">+ Add</button>
+              <button class="btn-add" onclick="addToCart('Bife a Parmegiana', 'bife-parmegiana', 'marmita')">+ Add</button>
             </div>
           </div>
         </div>
@@ -791,7 +836,7 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-bife-cavalo">R$ 17,90</span>
-              <button class="btn-add" onclick="addToCart('Bife a Cavalo', 'bife-cavalo')">+ Add</button>
+              <button class="btn-add" onclick="addToCart('Bife a Cavalo', 'bife-cavalo', 'marmita')">+ Add</button>
             </div>
           </div>
         </div>
@@ -812,7 +857,7 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-strogonoff-carne">R$ 18,90</span>
-              <button class="btn-add" onclick="addToCart('Strogonoff de Carne', 'strogonoff-carne')">+ Add</button>
+              <button class="btn-add" onclick="addToCart('Strogonoff de Carne', 'strogonoff-carne', 'marmita')">+ Add</button>
             </div>
           </div>
         </div>
@@ -833,7 +878,7 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-bife-milanesa">R$ 17,90</span>
-              <button class="btn-add" onclick="addToCart('Bife a Milanesa', 'bife-milanesa')">+ Add</button>
+              <button class="btn-add" onclick="addToCart('Bife a Milanesa', 'bife-milanesa', 'marmita')">+ Add</button>
             </div>
           </div>
         </div>
@@ -862,7 +907,7 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-coca-lata">R$ 5,00</span>
-              <button class="btn-add" onclick="addToCart('Coca-Cola Normal 350ml', 'coca-lata')">+ Add</button>
+              <button class="btn-add" onclick="addToCart('Coca-Cola Normal 350ml', 'coca-lata', 'bebida')">+ Add</button>
             </div>
           </div>
         </div>
@@ -881,7 +926,7 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-coca-zero">R$ 5,00</span>
-              <button class="btn-add" onclick="addToCart('Coca-Cola Zero 350ml', 'coca-zero')">+ Add</button>
+              <button class="btn-add" onclick="addToCart('Coca-Cola Zero 350ml', 'coca-zero', 'bebida')">+ Add</button>
             </div>
           </div>
         </div>
@@ -900,7 +945,7 @@
 
             <div class="card-footer">
               <span class="selected-price" id="price-coca-600">R$ 8,00</span>
-              <button class="btn-add" onclick="addToCart('Coca-Cola Normal 600ml', 'coca-600')">+ Add</button>
+              <button class="btn-add" onclick="addToCart('Coca-Cola Normal 600ml', 'coca-600', 'bebida')">+ Add</button>
             </div>
           </div>
         </div>
@@ -947,130 +992,89 @@
         <label for="delivery-type">Tipo de Entrega:</label>
         <select id="delivery-type" onchange="toggleAddressField()">
           <option value="retirada">📍 Retirada Presencial na Loja (Grátis)</option>
-          <option value="entrega">🛵 Entrega em Domicílio (Com Taxa)</option>
+          <option value="entrega">🛵 Entrega em Domicílio</option>
         </select>
       </div>
 
       <div class="form-group" id="address-group" style="display: none;">
-        <label for="client-address">Endereço de Entrega Completo:</label>
-        <input type="text" id="client-address" placeholder="Rua, Número, Bairro, Ponto de Referência">
+        <label for="client-address">Endereço Completo de Entrega:</label>
+        <input type="text" id="client-address" placeholder="Rua, Número, Bairro, Ponto de ref.">
       </div>
 
-      <!-- PRECISA DE TALHER -->
       <div class="form-group">
-        <label for="cutlery-option">Precisa de Talheres Descartáveis?</label>
-        <select id="cutlery-option">
-          <option value="Não">Não precisa</option>
-          <option value="Sim">Sim, por favor enviar talheres</option>
+        <label for="payment-method">Forma de Pagamento:</label>
+        <select id="payment-method">
+          <option value="Pix">Pix</option>
+          <option value="Cartão de Crédito/Débito">Cartão de Crédito/Débito</option>
+          <option value="Dinheiro">Dinheiro</option>
         </select>
       </div>
 
-      <div class="pix-box">
-        <p style="font-size: 0.85rem; font-weight: bold;">💸 Pagamento via PIX</p>
-        <p style="font-size: 0.75rem; color: var(--gray-text); margin-top: 4px;">Clique abaixo para copiar a chave PIX. Envie o comprovante via WhatsApp.</p>
-        <div class="pix-key" onclick="copyPixKey()">cantinhodavovo.pix@gmail.com 📋</div>
-        <span id="copy-msg" style="display:none; font-size:0.75rem; color: var(--orange-neon); margin-top:4px;">Chave copiada!</span>
-      </div>
-
-      <button class="btn-checkout" style="width: 100%; margin-top: 10px;" onclick="confirmOrder()">Confirmar Pedido no WhatsApp</button>
+      <button class="btn-submit" onclick="sendWhatsApp()">Enviar Pedido no WhatsApp 💬</button>
     </div>
   </div>
 
   <script>
-    const PHONE_NUMBER = "5511999999999";
-    const selectedState = {};
     let cart = [];
+    const selectedSizes = {};
 
-    document.querySelectorAll('.size-selector').forEach(selector => {
-      const itemId = selector.getAttribute('data-item');
-      const activeBtn = selector.querySelector('.size-btn.active');
-      const sizeStr = activeBtn.innerText.split('R$')[0].trim();
-      const priceVal = parseFloat(activeBtn.innerText.split('R$')[1].replace(',', '.').trim());
-      selectedState[itemId] = { size: sizeStr, price: priceVal };
-    });
+    function selectSize(button, size, price) {
+      const parentContainer = button.closest('.size-selector');
+      const itemId = parentContainer.getAttribute('data-item');
 
-    function selectSize(btnElement, size, price) {
-      const selector = btnElement.parentElement;
-      const itemId = selector.getAttribute('data-item');
-      
-      selector.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
-      btnElement.classList.add('active');
+      parentContainer.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
 
-      selectedState[itemId] = { size: size, price: price };
-      document.getElementById(`price-${itemId}`).innerText = `R$ ${price.toFixed(2).replace('.', ',')}`;
+      selectedSizes[itemId] = { size, price };
+
+      const priceDisplay = document.getElementById(`price-${itemId}`);
+      if (priceDisplay) {
+        priceDisplay.innerText = `R$ ${price.toFixed(2).replace('.', ',')}`;
+      }
     }
 
-    function addToCart(title, itemId) {
-      const current = selectedState[itemId];
-      cart.push({ title: title, size: current.size, price: current.price });
-      updateCartBar();
+    function addToCart(title, itemId, type) {
+      let selected = selectedSizes[itemId];
+      if (!selected) {
+        const defaultBtn = document.querySelector(`[data-item="${itemId}"] .size-btn.active`);
+        if (defaultBtn) {
+          const size = defaultBtn.innerText.split('R$')[0].trim();
+          const price = parseFloat(defaultBtn.querySelector('strong').innerText.replace('R$', '').replace(',', '.').trim());
+          selected = { size, price };
+        } else {
+          selected = { size: 'Padrão', price: 0 };
+        }
+      }
+
+      cart.push({
+        title: title,
+        size: selected.size,
+        price: selected.price,
+        type: type
+      });
+
+      updateCartUI();
     }
 
     function removeFromCart(index) {
       cart.splice(index, 1);
-      updateCartBar();
+      updateCartUI();
       renderCartSummary();
     }
 
-    function updateCartBar() {
-      const count = cart.length;
+    function updateCartUI() {
+      const cartCount = document.getElementById('cart-count');
+      const cartTotal = document.getElementById('cart-total');
+      
       const total = cart.reduce((sum, item) => sum + item.price, 0);
 
-      document.getElementById('cart-count').innerText = `${count} selecionada(s)`;
-      document.getElementById('cart-total').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
-    }
-
-    function filterItems() {
-      const query = document.getElementById('search-bar').value.toLowerCase();
-      const cards = document.querySelectorAll('.card');
-
-      cards.forEach(card => {
-        const title = card.querySelector('.card-title').innerText.toLowerCase();
-        const desc = card.querySelector('.card-desc').innerText.toLowerCase();
-        
-        if (title.includes(query) || desc.includes(query)) {
-          card.style.display = "flex";
-        } else {
-          card.style.display = "none";
-        }
-      });
-    }
-
-    function toggleAddressField() {
-      const deliveryType = document.getElementById('delivery-type').value;
-      const addressGroup = document.getElementById('address-group');
-      if (deliveryType === 'entrega') {
-        addressGroup.style.display = 'block';
-      } else {
-        addressGroup.style.display = 'none';
-      }
-    }
-
-    function renderCartSummary() {
-      const container = document.getElementById('cart-summary-list');
-      if (cart.length === 0) {
-        container.innerHTML = `<p style="text-align:center; color: var(--gray-text); font-size: 0.85rem;">Seu carrinho está vazio.</p>`;
-        return;
-      }
-
-      let html = '';
-      cart.forEach((item, index) => {
-        html += `
-          <div class="cart-item-row">
-            <div><strong>${item.title}</strong> (${item.size})</div>
-            <div>
-              <span>R$ ${item.price.toFixed(2).replace('.', ',')}</span>
-              <span class="remove-item" onclick="removeFromCart(${index})">✕</span>
-            </div>
-          </div>
-        `;
-      });
-      container.innerHTML = html;
+      cartCount.innerText = `${cart.length} item(ns) selecionado(s)`;
+      cartTotal.innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
     }
 
     function openModal() {
       if (cart.length === 0) {
-        alert("Por favor, selecione ao menos um item antes de finalizar!");
+        alert("Seu carrinho está vazio! Adicione itens antes de continuar.");
         return;
       }
       renderCartSummary();
@@ -1081,51 +1085,84 @@
       document.getElementById('checkout-modal').style.display = 'none';
     }
 
-    function copyPixKey() {
-      navigator.clipboard.writeText("cantinhodavovo.pix@gmail.com");
-      const msg = document.getElementById('copy-msg');
-      msg.style.display = 'block';
-      setTimeout(() => { msg.style.display = 'none'; }, 2000);
+    function renderCartSummary() {
+      const summaryList = document.getElementById('cart-summary-list');
+      summaryList.innerHTML = '';
+
+      cart.forEach((item, index) => {
+        const row = document.createElement('div');
+        row.className = 'cart-item-row';
+        row.innerHTML = `
+          <span>${item.title} (${item.size}) - R$ ${item.price.toFixed(2).replace('.', ',')}</span>
+          <span class="remove-item" onclick="removeFromCart(${index})">❌</span>
+        `;
+        summaryList.appendChild(row);
+      });
     }
 
-    function confirmOrder() {
+    function toggleAddressField() {
+      const deliveryType = document.getElementById('delivery-type').value;
+      const addressGroup = document.getElementById('address-group');
+      addressGroup.style.display = deliveryType === 'entrega' ? 'block' : 'none';
+    }
+
+    function filterItems() {
+      const input = document.getElementById('search-bar').value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+
+      cards.forEach(card => {
+        const title = card.querySelector('.card-title').innerText.toLowerCase();
+        const desc = card.querySelector('.card-desc').innerText.toLowerCase();
+        if (title.includes(input) || desc.includes(input)) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+
+    function sendWhatsApp() {
       const name = document.getElementById('client-name').value.trim();
       const deliveryType = document.getElementById('delivery-type').value;
       const address = document.getElementById('client-address').value.trim();
-      const cutlery = document.getElementById('cutlery-option').value;
+      const payment = document.getElementById('payment-method').value;
 
       if (!name) {
-        alert("Por favor, digite seu nome.");
+        alert("Por favor, informe seu nome.");
         return;
       }
 
       if (deliveryType === 'entrega' && !address) {
-        alert("Por favor, informe seu endereço para entrega.");
+        alert("Por favor, informe o endereço de entrega.");
         return;
       }
 
-      const total = cart.reduce((sum, item) => sum + item.price, 0);
-
-      let message = `*🧾 NOVO PEDIDO - CANTINHO DA VOVÓ*\n`;
-      message += `-----------------------------------\n`;
-      message += `👤 *Cliente:* ${name}\n`;
-      message += `🛵 *Tipo:* ${deliveryType === 'entrega' ? 'Entrega em Domicílio' : 'Retirada no Balcão'}\n`;
-      if (deliveryType === 'entrega') {
-        message += `📍 *Endereço:* ${address}\n`;
+      // Validação: Não permitir pedidos contendo apenas refrigerantes/bebidas
+      const hasFoodItem = cart.some(item => item.type === 'marmita');
+      if (!hasFoodItem) {
+        alert("Atenção: Não é possível fazer o pedido apenas de refrigerante. Por favor, adicione pelo menos uma marmita, escondidinho ou combo ao seu carrinho.");
+        return;
       }
-      message += `🍴 *Precisa de Talher:* ${cutlery}\n`;
-      message += `-----------------------------------\n`;
-      message += `*ITENS DO PEDIDO:*\n`;
 
-      cart.forEach((item) => {
-        message += `• 1x ${item.title} (${item.size}) - R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
+      let orderText = `*NOVO PEDIDO - CANTINHO DA VOVÓ*\n\n`;
+      orderText += `*Cliente:* ${name}\n`;
+      orderText += `*Tipo:* ${deliveryType === 'retirada' ? 'Retirada na Loja' : 'Entrega em Domicílio'}\n`;
+      if (deliveryType === 'entrega') {
+        orderText += `*Endereço:* ${address}\n`;
+      }
+      orderText += `*Pagamento:* ${payment}\n\n`;
+      orderText += `*Itens do Pedido:*\n`;
+
+      cart.forEach((item, index) => {
+        orderText += `${index + 1}. ${item.title} (${item.size}) - R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
       });
 
-      message += `-----------------------------------\n`;
-      message += `💰 *TOTAL DO PEDIDO:* R$ ${total.toFixed(2).replace('.', ',')}\n`;
-      message += `💳 *Pagamento:* PIX\n`;
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      orderText += `\n*Total:* R$ ${total.toFixed(2).replace('.', ',')}`;
 
-      window.open(`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+      const phoneNumber = "5500000000000"; // Substitua pelo seu número do WhatsApp com DDD
+      const encodedText = encodeURIComponent(orderText);
+      window.open(`https://wa.me/${phoneNumber}?text=${encodedText}`, '_blank');
     }
   </script>
 </body>
